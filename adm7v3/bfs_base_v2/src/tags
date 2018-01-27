@@ -1,0 +1,46 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CSR	graph.cpp	/^CSR::CSR(const Graph &g) : vertexNum(g.vertexNum), edgeNum(g.edgeNum){$/;"	f	class:CSR
+CSR	graph.h	/^class CSR{$/;"	c
+Graph	graph.cpp	/^Graph::Graph(const std::string& gName){$/;"	f	class:Graph
+Graph	graph.h	/^class Graph{$/;"	c
+HERE	graph.h	14;"	d
+OCL_CHECK	host.cpp	19;"	d	file:
+Vertex	graph.h	/^        explicit Vertex(int _idx) {$/;"	f	class:Vertex
+Vertex	graph.h	/^class Vertex {$/;"	c
+__GRAPH_H__	graph.h	2;"	d
+align	host.cpp	/^int align(int num, int dataWidth, int alignedWidth){$/;"	f
+bfs	bfs.cpp	/^void bfs($/;"	f
+bfsIt	host.cpp	/^void bfsIt(CSR* csr, char* depth, char level, int *eoBfs){$/;"	f
+bfs_kernel	bfs.cpp	/^static void bfs_kernel($/;"	f	file:
+ciai	graph.h	/^        std::vector<int> ciai;$/;"	m	class:CSR
+ciao	graph.h	/^        std::vector<int> ciao;$/;"	m	class:CSR
+createGraph	host.cpp	/^Graph* createGraph(const std::string &gName){$/;"	f
+edgeNum	graph.h	/^		const int edgeNum;$/;"	m	class:CSR
+edgeNum	graph.h	/^        int edgeNum;$/;"	m	class:Graph
+error_message	host.cpp	/^static const char *error_message =$/;"	v	file:
+getMaxIdx	graph.cpp	/^int Graph::getMaxIdx(const std::vector<std::vector<int>> &data){$/;"	f	class:Graph
+getMinIdx	graph.cpp	/^int Graph::getMinIdx(const std::vector<std::vector<int>> &data){$/;"	f	class:Graph
+getTotalHubVertexNum	host.cpp	/^int getTotalHubVertexNum(CSR* csr, int degreeThreshold){$/;"	f
+hwBfsInit	host.cpp	/^void hwBfsInit(int vertexNum, char* depth, int startVertexIdx){$/;"	f
+idx	graph.h	/^        int idx;$/;"	m	class:Vertex
+inDeg	graph.h	/^        int inDeg;$/;"	m	class:Vertex
+inVid	graph.h	/^        std::vector<int> inVid;$/;"	m	class:Vertex
+isUgraph	graph.h	/^        bool isUgraph;$/;"	m	class:Graph
+loadFile	graph.cpp	/^void Graph::loadFile($/;"	f	class:Graph
+main	host.cpp	/^int main(int argc, char **argv) {$/;"	f
+outDeg	graph.h	/^        int outDeg;$/;"	m	class:Vertex
+outVid	graph.h	/^        std::vector<int> outVid;$/;"	m	class:Vertex
+rpai	graph.h	/^        std::vector<int> rpai;$/;"	m	class:CSR
+rpao	graph.h	/^        std::vector<int> rpao; $/;"	m	class:CSR
+swBfs	host.cpp	/^void swBfs(CSR* csr, char* depth, const int &vertexIdx){$/;"	f
+swBfsInit	host.cpp	/^void swBfsInit(int vertexNum, char* depth, const int &vertexIdx){$/;"	f
+verify	host.cpp	/^int verify(char* swDepth, char* hwDepth, const int &num){$/;"	f
+vertexNum	graph.h	/^		const int vertexNum;$/;"	m	class:CSR
+vertexNum	graph.h	/^        int vertexNum;$/;"	m	class:Graph
+vertices	graph.h	/^        std::vector<Vertex*> vertices; $/;"	m	class:Graph
+~Vertex	graph.h	/^        ~Vertex(){$/;"	f	class:Vertex

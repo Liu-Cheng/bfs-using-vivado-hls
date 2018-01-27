@@ -1,0 +1,14 @@
+starting run at 2017年 09月 27日 星期三 10:12:56 CST
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k mmult -I./src/ --xp "prop:kernel.mmult.kernel_flags=-fno-builtin"  --xp "prop:solution.hls_pre_tcl=hls_pre.tcl" -DUSE_INT --debug  -o xclbin/mmult.hw_emu.xilinx_adm-pcie-7v3_1ddr_3_0.xo -t hw_emu --platform xilinx:adm-pcie-7v3:1ddr:3.0 ./src/krnlv10.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for hardware emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_adm-pcie-7v3_1ddr_3_0/xilinx_adm-pcie-7v3_1ddr_3_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:adm-pcie-7v3:1ddr:3.0
+INFO: [XOCC 60-242] Creating kernel: 'mmult'

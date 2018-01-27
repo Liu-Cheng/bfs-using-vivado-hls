@@ -1,0 +1,36 @@
+COMMON_REPO := ../../..
+
+#Common Includes
+include $(COMMON_REPO)/utility/boards.mk
+include $(COMMON_REPO)/libs/xcl/xcl.mk
+include $(COMMON_REPO)/libs/opencl/opencl.mk
+include $(COMMON_REPO)/libs/oclHelper/oclHelper.mk
+
+# Host Application
+helloworld_SRCS=./src/host.cpp ./src/graph.cpp $(oclHelper_SRCS) $(xcl_SRCS)
+helloworld_HDRS=$(xcl_HDRS)
+helloworld_CXXFLAGS=-I./src/ $(opencl_CXXFLAGS) $(xcl_CXXFLAGS) $(oclHelper_CXXFLAGS) -std=c++0x
+helloworld_LDFLAGS=$(opencl_LDFLAGS)
+
+EXES=bfs
+
+# Kernel
+bfs_SRCS=./src/bfs.cl 
+
+XOS=bfs
+
+# xclbin
+bfs_XOS=bfs
+
+XCLBINS=bfs
+
+DEVICES=xilinx:adm-pcie-7v3:1ddr:3.0
+
+# check
+check_EXE=bfs
+check_XCLBINS=bfs
+
+CHECKS=check
+#TARGETS=sw_emu
+
+include $(COMMON_REPO)/utility/rules.mk

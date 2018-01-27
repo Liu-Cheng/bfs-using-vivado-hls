@@ -1,0 +1,114 @@
+/opt/Xilinx/SDx/2016.4/Vivado_HLS/lnx64/tools/gcc/bin/g++ -Wall -O0 -g -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2016.4/runtime/include/1_2 -std=c++0x -o host ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -L/opt/Xilinx/SDx/2016.4/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2016.4/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2016.4/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs  -o xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xo -t hw --platform xilinx:adm-pcie-7v3:1ddr:3.0 ./src/bfs.cpp
+
+****** xocc v2016.4_sdx
+  **** SW Build 1804799 on Wed Mar  8 18:27:46 MST 2017
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+INFO: [XOCC 60-585] Compiling for hardware target
+INFO: [XOCC 60-423]   Target device: xilinx:adm-pcie-7v3:1ddr:3.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+INFO: [XOCC 203-811] Inferring bus burst read of variable length on port 'depth_for_inspect' (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:17:2).
+WARNING: [XOCC 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between bus request on port 'rpao' (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:68) and bus request on port 'rpao' (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:67).
+INFO: [XOCC 60-594] Finished kernel compilation
+Add Instance bfs_stage2 bfs_stage2_U0 582
+Add Instance bfs_stage1 bfs_stage1_U0 593
+Add Instance bfs_stage3 bfs_stage3_U0 605
+Add Instance bfs_stage4 bfs_stage4_U0 616
+Add Instance bfs_stage5 bfs_stage5_U0 627
+Add Instance bfs_stage0 bfs_stage0_U0 637
+Add Instance Block_proc Block_proc_U0 647
+Add Instance bfs_entry10619 bfs_entry10619_U0 653
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xo
+mkdir -p xclbin
+/opt/Xilinx/SDx/2016.4/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin -t hw --platform xilinx:adm-pcie-7v3:1ddr:3.0 xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xo
+
+****** xocc v2016.4_sdx
+  **** SW Build 1804799 on Wed Mar  8 18:27:46 MST 2017
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+INFO: [XOCC 60-629] Linking for hardware target
+INFO: [XOCC 60-423]   Target device: xilinx:adm-pcie-7v3:1ddr:3.0
+INFO: [XOCC 60-251]   Hardware accelerator integration...
+...................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin
+mkdir -p xclbin
+/opt/Xilinx/SDx/2016.4/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs  -o xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xo -t hw --platform xilinx:adm-pcie-7v3:1ddr:3.0 ./src/bfs.cpp
+
+****** xocc v2016.4_sdx
+  **** SW Build 1804799 on Wed Mar  8 18:27:46 MST 2017
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+INFO: [XOCC 60-585] Compiling for hardware target
+INFO: [XOCC 60-423]   Target device: xilinx:adm-pcie-7v3:1ddr:3.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+INFO: [XOCC 203-811] Inferring bus burst read of variable length on port 'depth_for_inspect' (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:19:2).
+WARNING: [XOCC 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between bus request on port 'rpao' (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:70) and bus request on port 'rpao' (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:69).
+WARNING: [XOCC 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between 'store' operation (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:188) of variable 'tmp', /media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:183 on array 'written_table0', /media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:168 and 'load' operation ('hash_val0', /media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:185) on array 'written_table0', /media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:168.
+INFO: [XOCC 60-594] Finished kernel compilation
+Add Instance bfs_stage2 bfs_stage2_U0 646
+Add Instance bfs_stage1 bfs_stage1_U0 657
+Add Instance bfs_stage3 bfs_stage3_U0 670
+Add Instance bfs_cache_ciao bfs_cache_ciao_U0 681
+Add Instance bfs_stage4 bfs_stage4_U0 690
+Add Instance bfs_stage5 bfs_stage5_U0 701
+Add Instance bfs_stage0 bfs_stage0_U0 711
+Add Instance Block_proc Block_proc_U0 721
+Add Instance bfs_entry12519 bfs_entry12519_U0 727
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xo
+mkdir -p xclbin
+/opt/Xilinx/SDx/2016.4/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin -t hw --platform xilinx:adm-pcie-7v3:1ddr:3.0 xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xo
+
+****** xocc v2016.4_sdx
+  **** SW Build 1804799 on Wed Mar  8 18:27:46 MST 2017
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+INFO: [XOCC 60-629] Linking for hardware target
+INFO: [XOCC 60-423]   Target device: xilinx:adm-pcie-7v3:1ddr:3.0
+INFO: [XOCC 60-251]   Hardware accelerator integration...
+......................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+WARNING: [XOCC 60-732] Link warning: One or more timing paths failed timing targeting 200 MHz. The frequency is being automatically changed to 180 MHz to enable proper functionality
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin
+mkdir -p xclbin
+/opt/Xilinx/SDx/2016.4/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs  -o xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xo -t hw --platform xilinx:adm-pcie-7v3:1ddr:3.0 ./src/bfs.cpp
+
+****** xocc v2016.4_sdx
+  **** SW Build 1804799 on Wed Mar  8 18:27:46 MST 2017
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+INFO: [XOCC 60-585] Compiling for hardware target
+INFO: [XOCC 60-423]   Target device: xilinx:adm-pcie-7v3:1ddr:3.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+INFO: [XOCC 203-811] Inferring bus burst read of variable length on port 'depth_for_inspect' (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:19:2).
+WARNING: [XOCC 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between bus request on port 'rpao' (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:70) and bus request on port 'rpao' (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:69).
+WARNING: [XOCC 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between 'store' operation (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:197) of variable 'tmp', /media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:189 on array 'written_table0', /media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:174 and 'load' operation ('hash_val0', /media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:193) on array 'written_table0', /media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/cache_2stagecaches/src/bfs.cpp:174.
+INFO: [XOCC 60-594] Finished kernel compilation
+Add Instance bfs_stage2 bfs_stage2_U0 646
+Add Instance bfs_stage1 bfs_stage1_U0 657
+Add Instance bfs_stage3 bfs_stage3_U0 670
+Add Instance bfs_cache_ciao bfs_cache_ciao_U0 681
+Add Instance bfs_stage4 bfs_stage4_U0 690
+Add Instance bfs_stage5 bfs_stage5_U0 701
+Add Instance bfs_stage0 bfs_stage0_U0 711
+Add Instance Block_proc Block_proc_U0 721
+Add Instance bfs_entry12519 bfs_entry12519_U0 727
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xo
+mkdir -p xclbin
+/opt/Xilinx/SDx/2016.4/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin -t hw --platform xilinx:adm-pcie-7v3:1ddr:3.0 xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xo
+
+****** xocc v2016.4_sdx
+  **** SW Build 1804799 on Wed Mar  8 18:27:46 MST 2017
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+INFO: [XOCC 60-629] Linking for hardware target
+INFO: [XOCC 60-423]   Target device: xilinx:adm-pcie-7v3:1ddr:3.0
+INFO: [XOCC 60-251]   Hardware accelerator integration...
+...............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+WARNING: [XOCC 60-732] Link warning: One or more timing paths failed timing targeting 200 MHz. The frequency is being automatically changed to 190 MHz to enable proper functionality
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin

@@ -1,0 +1,48 @@
+COMMON_REPO := ../../../
+
+include $(COMMON_REPO)/utility/boards.mk
+include $(COMMON_REPO)/libs/xcl/xcl.mk
+include $(COMMON_REPO)/libs/opencl/opencl.mk
+
+# Host Application
+host_SRCS=./src/host.cpp ./src/graph.cpp  $(xcl_SRCS)
+host_HDRS=$(xcl_HDRS)
+host_CXXFLAGS=-I./src/ $(xcl_CXXFLAGS) $(opencl_CXXFLAGS) -std=c++0x 
+host_LDFLAGS=$(opencl_LDFLAGS)
+
+EXES=host
+
+# Kernel
+bfs_lane0_SRCS=./src/bfs_lane0.cpp
+bfs_lane0_CLFLAGS= -k bfs_lane0
+
+bfs_lane1_SRCS=./src/bfs_lane1.cpp
+bfs_lane1_CLFLAGS= -k bfs_lane1
+
+bfs_lane2_SRCS=./src/bfs_lane2.cpp
+bfs_lane2_CLFLAGS= -k bfs_lane2
+
+bfs_lane3_SRCS=./src/bfs_lane3.cpp
+bfs_lane3_CLFLAGS= -k bfs_lane3
+
+merge_SRCS=./src/merge.cpp
+merge_CLFLAGS= -k merge
+
+XOS=bfs_lane0 bfs_lane1 bfs_lane2 bfs_lane3 merge
+
+# xclbin
+bfs_XOS=bfs_lane0 bfs_lane1 bfs_lane2 bfs_lane3 merge
+bfs_LDCLFLAGS=-k bfs_lane0 -k bfs_lane1 -k bfs_lane2 -k bfs_lane3 -k merge
+
+XCLBINS=bfs
+
+# check
+check_EXE=host
+check_XCLBINS=bfs
+DEVICES=xilinx:adm-pcie-7v3:1ddr:3.0
+TARGETS=sw_emu
+
+CHECKS=check
+
+include $(COMMON_REPO)/utility/rules.mk
+

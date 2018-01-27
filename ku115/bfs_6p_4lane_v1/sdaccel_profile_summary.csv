@@ -1,0 +1,99 @@
+SDAccel Profile Summary
+Generated on: 2018-01-15 21:49:19
+Msec since Epoch: 1516024159092
+Profiled application: host
+Target platform: Xilinx
+Target devices: xilinx:xil-accel-rd-ku115:4ddr-xpr:4.0-0
+Flow mode: CPU Emulation
+Tool version: 2017.1
+
+OpenCL API Calls
+API Name,Number Of Calls,Total Time (ms),Minimum Time (ms),Average Time (ms),Maximum Time (ms),
+clFinish,19,12858.1,2.3495,676.742,5237.66,
+clCreateProgramWithBinary,1,46.194,46.194,46.194,46.194,
+clReleaseKernel,3,1.56913,0.001822,0.523042,1.56256,
+clCreateBuffer,11,0.482915,0.012864,0.0439014,0.133218,
+clEnqueueNDRangeKernel,17,0.412374,0.01275,0.0242573,0.038817,
+clSetKernelArg,255,0.351933,0.000489,0.00138013,0.014233,
+clReleaseProgram,1,0.181121,0.181121,0.181121,0.181121,
+clEnqueueMigrateMemObjects,19,0.121251,0.003408,0.00638163,0.019359,
+clRetainCommandQueue,17,0.050075,0.001551,0.00294559,0.010502,
+clReleaseEvent,17,0.028539,0.000414,0.00167876,0.017467,
+clReleaseCommandQueue,18,0.019177,0.000433,0.00106539,0.006072,
+clRetainMemObject,13,0.011779,0.000754,0.000906077,0.002478,
+clCreateKernel,1,0.011509,0.011509,0.011509,0.011509,
+clReleaseMemObject,24,0.008777,0.000266,0.000365708,0.002306,
+clGetDeviceIDs,2,0.007204,0.000758,0.003602,0.006446,
+clRetainKernel,2,0.006047,0.001017,0.0030235,0.00503,
+clGetExtensionFunctionAddress,1,0.005384,0.005384,0.005384,0.005384,
+clGetPlatformInfo,4,0.004929,0.000422,0.00123225,0.002688,
+clCreateContext,1,0.004217,0.004217,0.004217,0.004217,
+clRetainDevice,2,0.003178,0.000702,0.001589,0.002476,
+clReleaseContext,1,0.003088,0.003088,0.003088,0.003088,
+clGetDeviceInfo,2,0.002563,0.001145,0.0012815,0.001418,
+clCreateCommandQueue,1,0.00248,0.00248,0.00248,0.00248,
+clReleaseDevice,2,0.001012,0.000261,0.000506,0.000751,
+
+
+Kernel Execution
+Kernel,Number Of Enqueues,Total Time (ms),Minimum Time (ms),Average Time (ms),Maximum Time (ms),
+bfs,17,12785.9,105.937,752.109,5237.51,
+
+
+Compute Unit Utilization
+Device,Compute Unit,Kernel,Global Work Size,Local Work Size,Number Of Calls,Total Time (ms),Minimum Time (ms),Average Time (ms),Maximum Time (ms),
+xilinx:xil-accel-rd-ku115:4ddr-xpr:4.0-0,bfs_1,bfs,1:1:1,1:1:1,17,12785.5,105.91,752.087,5237.49,
+
+
+Data Transfer: Host and Global Memory
+Context:Number of Devices,Transfer Type,Number Of Transfers,Transfer Rate (MB/s),Average Bandwidth Utilization (%),Average Size (KB),Total Time (ms),Average Time (ms),
+
+
+Data Transfer: Kernels and Global Memory
+Device,Transfer Type,Number Of Transfers,Transfer Rate (MB/s),Average Bandwidth Utilization (%),Average Size (KB),Average Time (ns),Device Execution Time (ms),
+
+
+Top Data Transfer: Kernels and Global Memory
+Device,Kernel Name,Number of Transfers,Average Bytes per Transfer,Transfer Efficiency (%),Total Data Transfer (MB),Total Write (MB),Total Read (MB),Transfer Rate (MB/s),Average Bandwidth Utilization (%),
+
+
+Top Kernel Execution
+Kernel Instance Address,Kernel,Context ID,Command Queue ID,Device,Start Time (ms),Duration (ms),Global Work Size,Local Work Size,
+116159024,bfs,0,0,xilinx:xil-accel-rd-ku115:4ddr-xpr:4.0-0,1518.4,5237.51,1:1:1,1:1:1,
+116159024,bfs,0,0,xilinx:xil-accel-rd-ku115:4ddr-xpr:4.0-0,6756.19,3617.61,1:1:1,1:1:1,
+116159024,bfs,0,0,xilinx:xil-accel-rd-ku115:4ddr-xpr:4.0-0,10374,1113.01,1:1:1,1:1:1,
+116159024,bfs,0,0,xilinx:xil-accel-rd-ku115:4ddr-xpr:4.0-0,464.478,1053.75,1:1:1,1:1:1,
+116159024,bfs,0,0,xilinx:xil-accel-rd-ku115:4ddr-xpr:4.0-0,11487.3,359.275,1:1:1,1:1:1,
+116159024,bfs,0,0,xilinx:xil-accel-rd-ku115:4ddr-xpr:4.0-0,11846.8,168.706,1:1:1,1:1:1,
+116159024,bfs,0,0,xilinx:xil-accel-rd-ku115:4ddr-xpr:4.0-0,332.67,131.718,1:1:1,1:1:1,
+116159024,bfs,0,0,xilinx:xil-accel-rd-ku115:4ddr-xpr:4.0-0,12015.7,125.01,1:1:1,1:1:1,
+116159024,bfs,0,0,xilinx:xil-accel-rd-ku115:4ddr-xpr:4.0-0,12794.8,114.475,1:1:1,1:1:1,
+116159024,bfs,0,0,xilinx:xil-accel-rd-ku115:4ddr-xpr:4.0-0,12682.4,112.228,1:1:1,1:1:1,
+
+
+Top Buffer Writes
+Buffer Address,Context ID,Command Queue ID,Start Time (ms),Duration (ms),Buffer Size (KB),Writing Rate(MB/s),
+116161376,0,0,52.1959,N/A,34322,N/A,
+
+
+Top Buffer Reads
+Buffer Address,Context ID,Command Queue ID,Start Time (ms),Duration (ms),Buffer Size (KB),Reading Rate(MB/s),
+116161376,0,0,12909.5,N/A,1157.89,N/A,
+116170224,0,0,6755.98,N/A,0.004,N/A,
+116170224,0,0,12909.3,N/A,0.004,N/A,
+116170224,0,0,226.235,N/A,0.004,N/A,
+116170224,0,0,10373.9,N/A,0.004,N/A,
+116170224,0,0,1518.26,N/A,0.004,N/A,
+116170224,0,0,12794.7,N/A,0.004,N/A,
+116170224,0,0,11487.1,N/A,0.004,N/A,
+116170224,0,0,11846.6,N/A,0.004,N/A,
+116170224,0,0,12015.6,N/A,0.004,N/A,
+
+
+PRC Parameters
+Parameter,Element,Value,
+DEVICE_EXEC_TIME,xilinx:xil-accel-rd-ku115:4ddr-xpr:4.0-0,12789.038191,
+CU_CALLS,xilinx:xil-accel-rd-ku115:4ddr-xpr:4.0-0|bfs_1,17,
+MEMORY_BIT_WIDTH,xilinx:xil-accel-rd-ku115:4ddr-xpr:4.0-0,512,
+
+

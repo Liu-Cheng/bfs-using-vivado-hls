@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<HTML>
+<BODY>
+<STYLE>
+	h1 {
+		font-size:200%;
+	}
+	table th,tr,td {
+		border-collapse: collapse; /* share common border between cells */
+		padding: 4px; /* padding within cells */
+		table-layout : fixed
+	}
+	table th {
+	background-color:lightsteelblue
+	}
+</STYLE>
+<h1>SDAccel Timeline Trace</h1>
+<br>
+<h3>Generated on: 2017-09-27 09:51:10</h3>
+<h3>Profiled application: host</h3>
+<h3>Target platform: Xilinx</h3>
+<br>
+<h2></h2>
+
+<TABLE border="1">
+<TR>
+<TH>Time (msec)</TH>
+<TH>Name</TH>
+<TH>Event</TH>
+<TH>Address/Port</TH>
+<TH>Size (Bytes or Num)</TH>
+<TH>Latency (cycles)</TH>
+<TH>Start (cycles)</TH>
+<TH>End (cycles)</TH>
+<TH>Latency (usec)</TH>
+<TH>Start (msec)</TH>
+<TH>End (msec)</TH>
+</TR>
+<TR><TD>0.3241</TD><TD>clGetExtensionFunctionAddress|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>0.35469</TD><TD>clGetExtensionFunctionAddress|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>0.376315</TD><TD>clGetPlatformInfo|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>0.391181</TD><TD>clGetPlatformInfo|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>0.40385</TD><TD>clGetPlatformInfo|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>0.415787</TD><TD>clGetPlatformInfo|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>3.145529</TD><TD>clGetPlatformInfo|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>3.169532</TD><TD>clGetPlatformInfo|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>3.18073</TD><TD>clGetPlatformInfo|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>3.191388</TD><TD>clGetPlatformInfo|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>3.20632</TD><TD>clGetDeviceIDs|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>3.224654</TD><TD>clGetDeviceIDs|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>3.236397</TD><TD>clGetDeviceInfo|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>3.248771</TD><TD>clGetDeviceInfo|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>3.259084</TD><TD>clGetDeviceInfo|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>3.269372</TD><TD>clGetDeviceInfo|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>3.284524</TD><TD>clCreateContext|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>3.299625</TD><TD>clCreateContext|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>3.312256</TD><TD>clCreateCommandQueue|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>3.32641</TD><TD>clCreateCommandQueue|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>4.258935</TD><TD>clCreateProgramWithBinary|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>22.44542</TD><TD>clCreateProgramWithBinary|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>22.5022</TD><TD>clBuildProgram|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>22.529951</TD><TD>clBuildProgram|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>22.702015</TD><TD>clCreateKernel|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>22.746216</TD><TD>clCreateKernel|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>89.590716</TD><TD>clCreateBuffer|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>89.87479</TD><TD>clCreateBuffer|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>89.895903</TD><TD>clCreateBuffer|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>90.041413</TD><TD>clCreateBuffer|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>90.061192</TD><TD>clCreateBuffer|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>90.191965</TD><TD>clCreateBuffer|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>90.224013</TD><TD>clEnqueueWriteBuffer|10749392</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>90.257912</TD><TD>WRITE_BUFFER</TD><TD>QUEUE</TD><TD>0XA43180</TD><TD>15974400</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>90.298227</TD><TD>WRITE_BUFFER</TD><TD>SUBMIT</TD><TD>0XA43180</TD><TD>15974400</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>90.353262</TD><TD>WRITE_BUFFER</TD><TD>START</TD><TD>0XA43180</TD><TD>15974400</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>95.271977</TD><TD>WRITE_BUFFER</TD><TD>END</TD><TD>0XA43180</TD><TD>15974400</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>95.300432</TD><TD>clEnqueueWriteBuffer|10749392</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>95.329173</TD><TD>clEnqueueWriteBuffer|10749392</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>95.348727</TD><TD>WRITE_BUFFER</TD><TD>QUEUE</TD><TD>0XA434C0</TD><TD>2654208</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>95.369021</TD><TD>WRITE_BUFFER</TD><TD>SUBMIT</TD><TD>0XA434C0</TD><TD>2654208</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>95.400723</TD><TD>WRITE_BUFFER</TD><TD>START</TD><TD>0XA434C0</TD><TD>2654208</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.16483</TD><TD>WRITE_BUFFER</TD><TD>END</TD><TD>0XA434C0</TD><TD>2654208</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.194481</TD><TD>clEnqueueWriteBuffer|10749392</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.245429</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.277119</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.292815</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.306859</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.320162</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.333588</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.346519</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.359682</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.372754</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.385709</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.398373</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.411199</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.478876</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.493281</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.507221</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.52018</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.533558</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.546635</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.560056</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.573021</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.586038</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.598699</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.611536</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.624225</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.637204</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.650367</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.663026</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.675489</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.688301</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.701147</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.713721</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.726511</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.739176</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.751861</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.764534</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.777652</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.790326</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.803376</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.815899</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.828713</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.88535</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.899758</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.92744</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.936112</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.944552</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.952852</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.961384</TD><TD>clSetKernelArg|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.969879</TD><TD>clSetKernelArg|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>96.980672</TD><TD>clEnqueueNDRangeKernel|10749392</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>97.042343</TD><TD>KERNEL|xilinx:adm-pcie-7v3:1ddr:3.0-0|hku.sw_emu.xilinx_adm-pcie-7v3_1ddr_3_0|mmult|1:1:1|all</TD><TD>QUEUE</TD><TD>0XA42BA0</TD><TD>1</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>97.08081</TD><TD>clEnqueueNDRangeKernel|10749392</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>97.093982</TD><TD>clFinish|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>157.497222</TD><TD>KERNEL|xilinx:adm-pcie-7v3:1ddr:3.0-0|hku.sw_emu.xilinx_adm-pcie-7v3_1ddr_3_0|mmult|1:1:1|all</TD><TD>SUBMIT</TD><TD>0XA42BA0</TD><TD>1</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>157.608228</TD><TD>KERNEL|xilinx:adm-pcie-7v3:1ddr:3.0-0|hku.sw_emu.xilinx_adm-pcie-7v3_1ddr_3_0|mmult|1:1:1|mmult_1</TD><TD>START</TD><TD>0XA42BA0</TD><TD>1</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226144.8</TD><TD>KERNEL|xilinx:adm-pcie-7v3:1ddr:3.0-0|hku.sw_emu.xilinx_adm-pcie-7v3_1ddr_3_0|mmult|1:1:1|mmult_1</TD><TD>END</TD><TD>0XA42BA0</TD><TD>1</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226144.9089</TD><TD>clFinish|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226144.9401</TD><TD>clGetEventProfilingInfo|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226144.9514</TD><TD>clGetEventProfilingInfo|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226144.9594</TD><TD>clGetEventProfilingInfo|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226144.9674</TD><TD>clGetEventProfilingInfo|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226144.9761</TD><TD>clEnqueueReadBuffer|10749392</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226144.9916</TD><TD>READ_BUFFER</TD><TD>QUEUE</TD><TD>0XA435D0</TD><TD>15974400</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226145.0234</TD><TD>READ_BUFFER</TD><TD>SUBMIT</TD><TD>0XA435D0</TD><TD>15974400</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226145.0878</TD><TD>READ_BUFFER</TD><TD>START</TD><TD>0XA435D0</TD><TD>15974400</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226184.4095</TD><TD>READ_BUFFER</TD><TD>END</TD><TD>0XA435D0</TD><TD>15974400</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226184.4464</TD><TD>clEnqueueReadBuffer|10749392</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226184.5166</TD><TD>clFlush|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226184.5253</TD><TD>clFlush|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226184.5316</TD><TD>clFinish|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226184.539</TD><TD>clFinish|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226184.547</TD><TD>clReleaseMemObject|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226184.5542</TD><TD>clReleaseMemObject|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226184.5602</TD><TD>clReleaseMemObject|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226184.566</TD><TD>clReleaseMemObject|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226184.5717</TD><TD>clReleaseMemObject|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226184.5774</TD><TD>clReleaseMemObject|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226184.584</TD><TD>clReleaseKernel|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226184.5906</TD><TD>clReleaseKernel|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226184.601</TD><TD>clReleaseProgram|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226408.9864</TD><TD>clReleaseProgram|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226409.0315</TD><TD>clReleaseCommandQueue|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226409.0486</TD><TD>clReleaseCommandQueue|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226409.0634</TD><TD>clReleaseContext|General</TD><TD>START</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD>226409.078</TD><TD>clReleaseContext|General</TD><TD>END</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+</TABLE>
+</BODY>
+</HTML>

@@ -1,0 +1,243 @@
+starting run at 2017年 09月 27日 星期三 09:40:45 CST
+/opt/Xilinx/SDx/2017.1/bin/emconfigutil --platform xilinx:adm-pcie-7v3:1ddr:3.0 --nd 1
+
+****** configutil v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_adm-pcie-7v3_1ddr_3_0/xilinx_adm-pcie-7v3_1ddr_3_0.xpfm
+emulation configuration file `emconfig.json` is created in ./ directory 
+XCL_EMULATION_MODE=sw_emu ./host --test 3 -m 20 -imn 100 -imc 1 -imh 28 -imw 28 -kh 5 -kw 5 -ph 0 -pw 0 -sh 1 -sw 1 -dh 1 -dw 1
+Try to xcl_world_single
+Try to xcl_import_binary
+INFO: Importing xclbin/hku.sw_emu.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin
+INFO: Loaded file
+INFO: Created Binary
+INFO: Built Program
+Try to xcl_get_kernel
+Finished xcl_get_kernel
+host_im_size 156800, dev_im_size 179200
+host_col_size 2880000
+host_out_size 2304000, dev_out_size 3072000
+host_filter_size 1000, dev_filter_size 1600
+cacheA=1, cacheB=1
+conv duration = 539.406 ms
+INFO: Test Passed
+ending run at 2017年 09月 27日 星期三 09:40:46 CST
+Elapsed time was 0 mins 1 secs.
+starting run at 2017年 09月 27日 星期三 09:40:46 CST
+/opt/Xilinx/SDx/2017.1/bin/emconfigutil --platform xilinx:adm-pcie-7v3:1ddr:3.0 --nd 1
+
+****** configutil v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_adm-pcie-7v3_1ddr_3_0/xilinx_adm-pcie-7v3_1ddr_3_0.xpfm
+emulation configuration file `emconfig.json` is created in ./ directory 
+XCL_EMULATION_MODE=sw_emu ./host --test 3 -m 50 -imn 100 -imc 20 -imh 12 -imw 12 -kh 5 -kw 5 -ph 0 -pw 0 -sh 1 -sw 1 -dh 1 -dw 1
+Try to xcl_world_single
+Try to xcl_import_binary
+INFO: Importing xclbin/hku.sw_emu.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin
+INFO: Loaded file
+INFO: Created Binary
+INFO: Built Program
+Try to xcl_get_kernel
+Finished xcl_get_kernel
+host_im_size 576000, dev_im_size 1536000
+host_col_size 6400000
+host_out_size 640000, dev_out_size 2560000
+host_filter_size 50000, dev_filter_size 64000
+cacheA=1, cacheB=1
+conv duration = 6493.57 ms
+INFO: Test Passed
+ending run at 2017年 09月 27日 星期三 09:40:54 CST
+Elapsed time was 0 mins 8 secs.
+starting run at 2017年 09月 27日 星期三 09:40:54 CST
+/opt/Xilinx/SDx/2017.1/bin/emconfigutil --platform xilinx:adm-pcie-7v3:1ddr:3.0 --nd 1
+
+****** configutil v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_adm-pcie-7v3_1ddr_3_0/xilinx_adm-pcie-7v3_1ddr_3_0.xpfm
+emulation configuration file `emconfig.json` is created in ./ directory 
+XCL_EMULATION_MODE=sw_emu ./host --test 3 -m 32 -imn 100 -imc 3 -imh 32 -imw 32 -kh 5 -kw 5 -ph 2 -pw 2 -sh 1 -sw 1 -dh 1 -dw 1
+Try to xcl_world_single
+Try to xcl_import_binary
+INFO: Importing xclbin/hku.sw_emu.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin
+INFO: Loaded file
+INFO: Created Binary
+INFO: Built Program
+Try to xcl_get_kernel
+Finished xcl_get_kernel
+host_im_size 614400, dev_im_size 614400
+host_col_size 15360000
+host_out_size 6553600, dev_out_size 6553600
+host_filter_size 4800, dev_filter_size 4800
+cacheA=1, cacheB=1
+conv duration = 2070.61 ms
+INFO: Test Passed
+ending run at 2017年 09月 27日 星期三 09:40:58 CST
+Elapsed time was 0 mins 4 secs.
+starting run at 2017年 09月 27日 星期三 09:40:58 CST
+/opt/Xilinx/SDx/2017.1/bin/emconfigutil --platform xilinx:adm-pcie-7v3:1ddr:3.0 --nd 1
+
+****** configutil v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_adm-pcie-7v3_1ddr_3_0/xilinx_adm-pcie-7v3_1ddr_3_0.xpfm
+emulation configuration file `emconfig.json` is created in ./ directory 
+XCL_EMULATION_MODE=sw_emu ./host --test 3 -m 32 -imn 100 -imc 32 -imh 16 -imw 16 -kh 5 -kw 5 -ph 2 -pw 2 -sh 1 -sw 1 -dh 1 -dw 1
+Try to xcl_world_single
+Try to xcl_import_binary
+INFO: Importing xclbin/hku.sw_emu.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin
+INFO: Loaded file
+INFO: Created Binary
+INFO: Built Program
+Try to xcl_get_kernel
+Finished xcl_get_kernel
+host_im_size 1638400, dev_im_size 3276800
+host_col_size 40960000
+host_out_size 1638400, dev_out_size 3276800
+host_filter_size 51200, dev_filter_size 51200
+cacheA=1, cacheB=1
+conv duration = 10575.5 ms
+INFO: Test Passed
+ending run at 2017年 09月 27日 星期三 09:41:12 CST
+Elapsed time was 0 mins 14 secs.
+starting run at 2017年 09月 27日 星期三 09:41:12 CST
+/opt/Xilinx/SDx/2017.1/bin/emconfigutil --platform xilinx:adm-pcie-7v3:1ddr:3.0 --nd 1
+
+****** configutil v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_adm-pcie-7v3_1ddr_3_0/xilinx_adm-pcie-7v3_1ddr_3_0.xpfm
+emulation configuration file `emconfig.json` is created in ./ directory 
+XCL_EMULATION_MODE=sw_emu ./host --test 3 -m 64 -imn 100 -imc 32 -imh 8 -imw 8 -kh 5 -kw 5 -ph 2 -pw 2 -sh 1 -sw 1 -dh 1 -dw 1
+Try to xcl_world_single
+Try to xcl_import_binary
+INFO: Importing xclbin/hku.sw_emu.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin
+INFO: Loaded file
+INFO: Created Binary
+INFO: Built Program
+Try to xcl_get_kernel
+Finished xcl_get_kernel
+host_im_size 409600, dev_im_size 1638400
+host_col_size 10240000
+host_out_size 819200, dev_out_size 3276800
+host_filter_size 102400, dev_filter_size 102400
+cacheA=1, cacheB=1
+conv duration = 10567.9 ms
+INFO: Test Passed
+ending run at 2017年 09月 27日 星期三 09:41:25 CST
+Elapsed time was 0 mins 13 secs.
+starting run at 2017年 09月 27日 星期三 09:41:25 CST
+/opt/Xilinx/SDx/2017.1/bin/emconfigutil --platform xilinx:adm-pcie-7v3:1ddr:3.0 --nd 1
+
+****** configutil v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_adm-pcie-7v3_1ddr_3_0/xilinx_adm-pcie-7v3_1ddr_3_0.xpfm
+emulation configuration file `emconfig.json` is created in ./ directory 
+XCL_EMULATION_MODE=sw_emu ./host --test 3 -m 96 -imn 50 -imc 3 -imh 227 -imw 227 -kh 11 -kw 11 -ph 0 -pw 0 -sh 4 -sw 4 -dh 1 -dw 1
+Try to xcl_world_single
+Try to xcl_import_binary
+INFO: Importing xclbin/hku.sw_emu.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin
+INFO: Loaded file
+INFO: Created Binary
+INFO: Built Program
+Try to xcl_get_kernel
+Finished xcl_get_kernel
+host_im_size 15458700, dev_im_size 17433600
+host_col_size 109807500
+host_out_size 29040000, dev_out_size 33792000
+host_filter_size 69696, dev_filter_size 69696
+cacheA=1, cacheB=1
+conv duration = 51728.3 ms
+INFO: Test Passed
+ending run at 2017年 09月 27日 星期三 09:42:41 CST
+Elapsed time was 1 mins 16 secs.
+starting run at 2017年 09月 27日 星期三 09:42:41 CST
+/opt/Xilinx/SDx/2017.1/bin/emconfigutil --platform xilinx:adm-pcie-7v3:1ddr:3.0 --nd 1
+
+****** configutil v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_adm-pcie-7v3_1ddr_3_0/xilinx_adm-pcie-7v3_1ddr_3_0.xpfm
+emulation configuration file `emconfig.json` is created in ./ directory 
+XCL_EMULATION_MODE=sw_emu ./host --test 3 -m 256 -imn 50 -imc 96 -imh 27 -imw 27 -kh 5 -kw 5 -ph 2 -pw 2 -sh 1 -sw 1 -dh 1 -dw 1
+Try to xcl_world_single
+Try to xcl_import_binary
+INFO: Importing xclbin/hku.sw_emu.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin
+INFO: Loaded file
+INFO: Created Binary
+INFO: Built Program
+Try to xcl_get_kernel
+Finished xcl_get_kernel
+host_im_size 6998400, dev_im_size 8294400
+host_col_size 174960000
+host_out_size 18662400, dev_out_size 22118400
+host_filter_size 1228800, dev_filter_size 1228800
+cacheA=0, cacheB=1
+conv duration = 216191 ms
+INFO: Test Passed
+ending run at 2017年 09月 27日 星期三 09:48:05 CST
+Elapsed time was 5 mins 24 secs.
+starting run at 2017年 09月 27日 星期三 09:48:05 CST
+/opt/Xilinx/SDx/2017.1/bin/emconfigutil --platform xilinx:adm-pcie-7v3:1ddr:3.0 --nd 1
+
+****** configutil v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_adm-pcie-7v3_1ddr_3_0/xilinx_adm-pcie-7v3_1ddr_3_0.xpfm
+emulation configuration file `emconfig.json` is created in ./ directory 
+XCL_EMULATION_MODE=sw_emu ./host --test 3 -m 384 -imn 50 -imc 256 -imh 13 -imw 13 -kh 3 -kw 3 -ph 1 -pw 1 -sh 1 -sw 1 -dh 1 -dw 1
+Try to xcl_world_single
+Try to xcl_import_binary
+INFO: Importing xclbin/hku.sw_emu.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin
+INFO: Loaded file
+INFO: Created Binary
+INFO: Built Program
+Try to xcl_get_kernel
+Finished xcl_get_kernel
+host_im_size 4326400, dev_im_size 10649600
+host_col_size 38937600
+host_out_size 6489600, dev_out_size 15974400
+host_filter_size 1769472, dev_filter_size 1769472
+cacheA=0, cacheB=1
+conv duration = 150198 ms
+INFO: Test Passed
+ending run at 2017年 09月 27日 星期三 09:51:09 CST
+Elapsed time was 3 mins 4 secs.
+starting run at 2017年 09月 27日 星期三 09:51:09 CST
+/opt/Xilinx/SDx/2017.1/bin/emconfigutil --platform xilinx:adm-pcie-7v3:1ddr:3.0 --nd 1
+
+****** configutil v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_adm-pcie-7v3_1ddr_3_0/xilinx_adm-pcie-7v3_1ddr_3_0.xpfm
+emulation configuration file `emconfig.json` is created in ./ directory 
+XCL_EMULATION_MODE=sw_emu ./host --test 3 -m 384 -imn 50 -imc 384 -imh 13 -imw 13 -kh 3 -kw 3 -ph 1 -pw 1 -sh 1 -sw 1 -dh 1 -dw 1
+Try to xcl_world_single
+Try to xcl_import_binary
+INFO: Importing xclbin/hku.sw_emu.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin
+INFO: Loaded file
+INFO: Created Binary
+INFO: Built Program
+Try to xcl_get_kernel
+Finished xcl_get_kernel
+host_im_size 6489600, dev_im_size 15974400
+host_col_size 58406400
+host_out_size 6489600, dev_out_size 15974400
+host_filter_size 2654208, dev_filter_size 2654208
+cacheA=0, cacheB=1
+conv duration = 225987 ms
+INFO: Test Passed
+ending run at 2017年 09月 27日 星期三 09:55:50 CST
+Elapsed time was 4 mins 41 secs.

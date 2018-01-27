@@ -1,0 +1,58 @@
+SDAccel Profile Summary
+Generated on: 2017-09-07 15:32:43
+Msec since Epoch: 1504769563727
+Profiled application: host
+Target platform: Xilinx
+Target devices: 
+Flow mode: System Run
+Tool version: 2017.1
+
+OpenCL API Calls
+API Name,Number Of Calls,Total Time (ms),Minimum Time (ms),Average Time (ms),Maximum Time (ms),
+clCreateContext,1,2816.39,2816.39,2816.39,2816.39,
+clCreateProgramWithBinary,1,140.166,140.166,140.166,140.166,
+clCreateCommandQueue,1,0.01276,0.01276,0.01276,0.01276,
+clGetExtensionFunctionAddress,1,0.007822,0.007822,0.007822,0.007822,
+clGetPlatformInfo,4,0.005818,0.000348,0.0014545,0.003281,
+clGetDeviceIDs,1,0.004173,0.004173,0.004173,0.004173,
+clGetDeviceInfo,2,0.002253,0.000623,0.0011265,0.00163,
+
+
+Kernel Execution
+Kernel,Number Of Enqueues,Total Time (ms),Minimum Time (ms),Average Time (ms),Maximum Time (ms),
+
+
+Compute Unit Utilization
+Device,Compute Unit,Kernel,Global Work Size,Local Work Size,Number Of Calls,Total Time (ms),Minimum Time (ms),Average Time (ms),Maximum Time (ms),
+
+
+Data Transfer: Host and Global Memory
+Context:Number of Devices,Transfer Type,Number Of Transfers,Transfer Rate (MB/s),Average Bandwidth Utilization (%),Average Size (KB),Total Time (ms),Average Time (ms),
+context0:1,READ,0,0.000000,0.000000,0,0.000000,0.000000,
+context0:1,WRITE,0,0.000000,0.000000,0,0.000000,0.000000,
+
+
+Data Transfer: Kernels and Global Memory
+Device,Transfer Type,Number Of Transfers,Transfer Rate (MB/s),Average Bandwidth Utilization (%),Average Size (KB),Average Time (ns),Device Execution Time (ms),
+
+
+Top Data Transfer: Kernels and Global Memory
+Device,Kernel Name,Number of Transfers,Average Bytes per Transfer,Transfer Efficiency (%),Total Data Transfer (MB),Total Write (MB),Total Read (MB),Transfer Rate (MB/s),Average Bandwidth Utilization (%),
+
+
+Top Kernel Execution
+Kernel Instance Address,Kernel,Context ID,Command Queue ID,Device,Start Time (ms),Duration (ms),Global Work Size,Local Work Size,
+
+
+Top Buffer Writes
+Buffer Address,Context ID,Command Queue ID,Start Time (ms),Duration (ms),Buffer Size (KB),Writing Rate(MB/s),
+
+
+Top Buffer Reads
+Buffer Address,Context ID,Command Queue ID,Start Time (ms),Duration (ms),Buffer Size (KB),Reading Rate(MB/s),
+
+
+PRC Parameters
+Parameter,Element,Value,
+
+

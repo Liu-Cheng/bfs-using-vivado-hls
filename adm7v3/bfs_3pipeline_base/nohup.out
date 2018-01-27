@@ -1,0 +1,56 @@
+mkdir -p xclbin
+/opt/Xilinx/SDx/2016.4/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs  -o xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xo -t hw --platform xilinx:adm-pcie-7v3:1ddr:3.0 ./src/bfs.cpp
+
+****** xocc v2016.4_sdx
+  **** SW Build 1804799 on Wed Mar  8 18:27:46 MST 2017
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+INFO: [XOCC 60-585] Compiling for hardware target
+INFO: [XOCC 60-423]   Target device: xilinx:adm-pcie-7v3:1ddr:3.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+INFO: [XOCC 203-811] Inferring bus burst read of variable length on port 'depth' (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/bfs_c_opt2.12/src/bfs.cpp:20:2).
+INFO: [XOCC 203-811] Inferring bus burst read of variable length on port 'depth_for_inspect1' (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/bfs_c_opt2.12/src/bfs.cpp:20:2).
+INFO: [XOCC 203-811] Inferring bus burst read of variable length on port 'depth_for_inspect0' (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/bfs_c_opt2.12/src/bfs.cpp:20:2).
+WARNING: [XOCC 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between bus request on port 'rpao' (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/bfs_c_opt2.12/src/bfs.cpp:76) and bus request on port 'rpao' (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/bfs_c_opt2.12/src/bfs.cpp:75).
+WARNING: [XOCC 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between bus request on port 'rpao' (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/bfs_c_opt2.12/src/bfs.cpp:76) and bus request on port 'rpao' (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/bfs_c_opt2.12/src/bfs.cpp:75).
+WARNING: [XOCC 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between bus request on port 'rpao' (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/bfs_c_opt2.12/src/bfs.cpp:76) and bus request on port 'rpao' (/media/diskp1/chenxinyu/SDAccel_Examples/getting_started/host/bfs_c_opt2.12/src/bfs.cpp:75).
+INFO: [XOCC 60-594] Finished kernel compilation
+Add Instance read_rpao60 read_rpao60_U0 1752
+Add Instance read_rpao61 read_rpao61_U0 1765
+Add Instance read_rpao_1 read_rpao_1_U0 1778
+Add Instance Block_proc52 Block_proc52_U0 1791
+Add Instance frontier_inspect frontier_inspect_U0 1863
+Add Instance frontier_inspect59 frontier_inspect59_U0 1874
+Add Instance read_ciao62 read_ciao62_U0 1884
+Add Instance read_ciao63 read_ciao63_U0 1895
+Add Instance read_ciao read_ciao_U0 1906
+Add Instance frontier_inspect58 frontier_inspect58_U0 1917
+Add Instance read_depth57 read_depth57_U0 1927
+Add Instance read_depth read_depth_U0 1937
+Add Instance get_ngb64 get_ngb64_U0 1949
+Add Instance get_ngb65 get_ngb65_U0 1960
+Add Instance get_ngb get_ngb_U0 1971
+Add Instance read_depth56 read_depth56_U0 1982
+Add Instance update_depth68 update_depth68_U0 1992
+Add Instance update_depth69 update_depth69_U0 2002
+Add Instance update_depth update_depth_U0 2012
+Add Instance select_frontier66 select_frontier66_U0 2022
+Add Instance select_frontier67 select_frontier67_U0 2030
+Add Instance select_frontier select_frontier_U0 2038
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xo
+mkdir -p xclbin
+/opt/Xilinx/SDx/2016.4/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin -t hw --platform xilinx:adm-pcie-7v3:1ddr:3.0 xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xo
+
+****** xocc v2016.4_sdx
+  **** SW Build 1804799 on Wed Mar  8 18:27:46 MST 2017
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+INFO: [XOCC 60-629] Linking for hardware target
+INFO: [XOCC 60-423]   Target device: xilinx:adm-pcie-7v3:1ddr:3.0
+INFO: [XOCC 60-251]   Hardware accelerator integration...
+........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+WARNING: [XOCC 60-732] Link warning: One or more timing paths failed timing targeting 200 MHz. The frequency is being automatically changed to 190 MHz to enable proper functionality
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin

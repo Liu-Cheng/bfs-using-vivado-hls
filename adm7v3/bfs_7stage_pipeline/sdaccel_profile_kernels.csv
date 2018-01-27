@@ -1,0 +1,29 @@
+Compute Units: Running Time and Stalls
+Compute Unit, Running Time (us), Intra-Kernel Stream Stalls (%), External Memory Stalls (%), Inter-Kernel Pipe Stalls (%)
+bfs_1,12.280,2.321,9.813,0.000
+
+Functions: Running Time and Stalls
+Compute Unit, Function, Running Time (us), Intra-Kernel Stream Stalls (%), External Memory Stalls (%), Inter-Kernel Pipe Stalls (%)
+bfs_1,read_rpao_U0,12.280,0.041,2.036,0.000
+bfs_1,read_ciao_U0,12.280,0.041,2.036,0.000
+bfs_1,frontier_inspect_U0,12.275,2.239,0.000,0.000
+bfs_1,get_ngb_depth_U0,12.280,0.041,2.036,0.000
+bfs_1,update_depth_U0,12.275,0.081,1.832,0.000
+bfs_1,read_depth_U0,12.280,0.041,1.873,0.000
+bfs_1,select_frontier_U0,12.270,0.000,0.000,0.000
+bfs_1,Block_proc_U0,0.010,0.000,0.000,0.000
+bfs_1,bfs_entry1339_U0,0.005,0.000,0.000,0.000
+
+Compute Units: Port Data Transfer
+Compute Unit, Port, Write Time (us), Outstanding Write (%), Read Time (us), Outstanding Read (%)
+bfs_1,m_axi_gmem0,0.000,0.000,0.240,1.954
+bfs_1,m_axi_gmem1,0.000,0.000,0.240,1.954
+bfs_1,m_axi_gmem2,0.000,0.000,11.170,90.961
+bfs_1,m_axi_gmem3,0.000,0.000,0.240,1.954
+bfs_1,m_axi_gmem4,0.210,1.710,0.000,0.000
+bfs_1,m_axi_gmem5,0.000,0.000,0.000,0.000
+
+Functions: Loop Pipeline Activity
+Compute Unit, Function, Pipeline Region, Active Time (us), Utilization (%)
+bfs_1,read_ciao_U0,0,0.305,2.484
+

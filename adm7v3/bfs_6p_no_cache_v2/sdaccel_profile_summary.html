@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<HTML>
+<BODY>
+<STYLE>
+	h1 {
+		font-size:200%;
+	}
+	table th,tr,td {
+		border-collapse: collapse; /* share common border between cells */
+		padding: 4px; /* padding within cells */
+		table-layout : fixed
+	}
+	table th {
+	background-color:lightsteelblue
+	}
+</STYLE>
+<h1>SDAccel Profile Summary</h1>
+<br>
+<h3>Generated on: 2018-01-11 21:53:05</h3>
+<h3>Profiled application: host</h3>
+<h3>Target platform: Xilinx</h3>
+<h3>Target devices: xilinx:adm-pcie-7v3:1ddr:3.0-0</h3>
+<h3>Flow mode: System Run</h3>
+<h3>Tool version: 2017.1</h3>
+<br>
+<br>
+<h2>OpenCL API Calls</h2>
+
+<TABLE border="1">
+<TR>
+<TH>API Name</TH>
+<TH>Number Of Calls</TH>
+<TH>Total Time (ms)</TH>
+<TH>Minimum Time (ms)</TH>
+<TH>Average Time (ms)</TH>
+<TH>Maximum Time (ms)</TH>
+</TR>
+<TR><TD>clCreateContext</TD><TD>1</TD><TD>2850.75</TD><TD>2850.75</TD><TD>2850.75</TD><TD>2850.75</TD></TR>
+<TR><TD>clFinish</TD><TD>18</TD><TD>1185.23</TD><TD>0.002874</TD><TD>65.8461</TD><TD>408.299</TD></TR>
+<TR><TD>clCreateProgramWithBinary</TD><TD>1</TD><TD>418.919</TD><TD>418.919</TD><TD>418.919</TD><TD>418.919</TD></TR>
+<TR><TD>clEnqueueWriteBuffer</TD><TD>3</TD><TD>12.9726</TD><TD>0.396753</TD><TD>4.32421</TD><TD>10.4147</TD></TR>
+<TR><TD>clEnqueueReadBuffer</TD><TD>18</TD><TD>5.68134</TD><TD>0.261691</TD><TD>0.31563</TD><TD>0.889016</TD></TR>
+<TR><TD>clEnqueueNDRangeKernel</TD><TD>17</TD><TD>0.617383</TD><TD>0.033615</TD><TD>0.0363166</TD><TD>0.047848</TD></TR>
+<TR><TD>clSetKernelArg</TD><TD>24</TD><TD>0.088526</TD><TD>0.001235</TD><TD>0.00368858</TD><TD>0.012363</TD></TR>
+<TR><TD>clReleaseProgram</TD><TD>1</TD><TD>0.079676</TD><TD>0.079676</TD><TD>0.079676</TD><TD>0.079676</TD></TR>
+<TR><TD>clGetEventProfilingInfo</TD><TD>34</TD><TD>0.078719</TD><TD>0.000946</TD><TD>0.00231526</TD><TD>0.016121</TD></TR>
+<TR><TD>clCreateBuffer</TD><TD>4</TD><TD>0.031659</TD><TD>0.002368</TD><TD>0.00791475</TD><TD>0.016037</TD></TR>
+<TR><TD>clCreateKernel</TD><TD>1</TD><TD>0.01316</TD><TD>0.01316</TD><TD>0.01316</TD><TD>0.01316</TD></TR>
+<TR><TD>clCreateCommandQueue</TD><TD>1</TD><TD>0.006717</TD><TD>0.006717</TD><TD>0.006717</TD><TD>0.006717</TD></TR>
+<TR><TD>clBuildProgram</TD><TD>1</TD><TD>0.005855</TD><TD>0.005855</TD><TD>0.005855</TD><TD>0.005855</TD></TR>
+<TR><TD>clGetExtensionFunctionAddress</TD><TD>1</TD><TD>0.00549</TD><TD>0.00549</TD><TD>0.00549</TD><TD>0.00549</TD></TR>
+<TR><TD>clGetDeviceIDs</TD><TD>1</TD><TD>0.0048</TD><TD>0.0048</TD><TD>0.0048</TD><TD>0.0048</TD></TR>
+<TR><TD>clGetPlatformInfo</TD><TD>4</TD><TD>0.004711</TD><TD>0.000382</TD><TD>0.00117775</TD><TD>0.002549</TD></TR>
+<TR><TD>clReleaseMemObject</TD><TD>4</TD><TD>0.004186</TD><TD>0.00034</TD><TD>0.0010465</TD><TD>0.003015</TD></TR>
+<TR><TD>clGetDeviceInfo</TD><TD>2</TD><TD>0.00201</TD><TD>0.000458</TD><TD>0.001005</TD><TD>0.001552</TD></TR>
+<TR><TD>clReleaseCommandQueue</TD><TD>1</TD><TD>0.001614</TD><TD>0.001614</TD><TD>0.001614</TD><TD>0.001614</TD></TR>
+<TR><TD>clReleaseKernel</TD><TD>1</TD><TD>0.001154</TD><TD>0.001154</TD><TD>0.001154</TD><TD>0.001154</TD></TR>
+<TR><TD>clReleaseContext</TD><TD>1</TD><TD>0.00114</TD><TD>0.00114</TD><TD>0.00114</TD><TD>0.00114</TD></TR>
+</TABLE>
+<br>
+<h2>Kernel Execution</h2>
+
+<TABLE border="1">
+<TR>
+<TH>Kernel</TH>
+<TH>Number Of Enqueues</TH>
+<TH>Total Time (ms)</TH>
+<TH>Minimum Time (ms)</TH>
+<TH>Average Time (ms)</TH>
+<TH>Maximum Time (ms)</TH>
+</TR>
+<TR><TD>bfs</TD><TD>17</TD><TD>1171.73</TD><TD>5.83651</TD><TD>68.9255</TD><TD>408.208</TD></TR>
+</TABLE>
+<br>
+<h2>Compute Unit Utilization</h2>
+
+<TABLE border="1">
+<TR>
+<TH>Device</TH>
+<TH>Compute Unit</TH>
+<TH>Kernel</TH>
+<TH>Global Work Size</TH>
+<TH>Local Work Size</TH>
+<TH>Number Of Calls</TH>
+<TH>Total Time (ms)</TH>
+<TH>Minimum Time (ms)</TH>
+<TH>Average Time (ms)</TH>
+<TH>Maximum Time (ms)</TH>
+</TR>
+<TR><TD>xilinx:adm-pcie-7v3:1ddr:3.0-0</TD><TD>bfs_1</TD><TD>bfs</TD><TD>1:1:1</TD><TD>1:1:1</TD><TD>17</TD><TD>1171.44</TD><TD>5.82385</TD><TD>68.9085</TD><TD>408.194</TD></TR>
+</TABLE>
+<br>
+<h2>Data Transfer: Host and Global Memory</h2>
+
+<TABLE border="1">
+<TR>
+<TH>Context:Number of Devices</TH>
+<TH>Transfer Type</TH>
+<TH>Number Of Transfers</TH>
+<TH>Transfer Rate (MB/s)</TH>
+<TH>Average Bandwidth Utilization (%)</TH>
+<TH>Average Size (KB)</TH>
+<TH>Total Time (ms)</TH>
+<TH>Average Time (ms)</TH>
+</TR>
+<TR><TD>context0:1</TD><TD>READ</TD><TD>18</TD><TD>402.084949</TD><TD>4.188385</TD><TD>64.3309</TD><TD>2.879879</TD><TD>0.159993</TD></TR>
+<TR><TD>context0:1</TD><TD>WRITE</TD><TD>3</TD><TD>2746.218986</TD><TD>28.606448</TD><TD>11440.7</TD><TD>12.497905</TD><TD>4.165968</TD></TR>
+</TABLE>
+<br>
+<h2>Data Transfer: Kernels and Global Memory</h2>
+
+<TABLE border="1">
+<TR>
+<TH>Device</TH>
+<TH>Transfer Type</TH>
+<TH>Number Of Transfers</TH>
+<TH>Transfer Rate (MB/s)</TH>
+<TH>Average Bandwidth Utilization (%)</TH>
+<TH>Average Size (KB)</TH>
+<TH>Average Time (ns)</TH>
+<TH>Device Execution Time (ms)</TH>
+</TR>
+<TR><TD>xilinx:adm-pcie-7v3:1ddr:3.0-0</TD><TD>READ</TD><TD>8739848</TD><TD>100.89</TD><TD>0.875781</TD><TD>0.0136076</TD><TD>473.659</TD><TD>1178.79</TD></TR>
+<TR><TD>xilinx:adm-pcie-7v3:1ddr:3.0-0</TD><TD>WRITE</TD><TD>1135517</TD><TD>0.963331</TD><TD>0.00836225</TD><TD>0.00100004</TD><TD>22.4065</TD><TD>1178.79</TD></TR>
+</TABLE>
+<br>
+<h2>Top Data Transfer: Kernels and Global Memory</h2>
+
+<TABLE border="1">
+<TR>
+<TH>Device</TH>
+<TH>Kernel Name</TH>
+<TH>Number of Transfers</TH>
+<TH>Average Bytes per Transfer</TH>
+<TH>Transfer Efficiency (%)</TH>
+<TH>Total Data Transfer (MB)</TH>
+<TH>Total Write (MB)</TH>
+<TH>Total Read (MB)</TH>
+<TH>Transfer Rate (MB/s)</TH>
+<TH>Average Bandwidth Utilization (%)</TH>
+</TR>
+<TR><TD>xilinx:adm-pcie-7v3:1ddr:3.0-0</TD><TD>ALL</TD><TD>9875365</TD><TD>12.1579</TD><TD>0.296825</TD><TD>120.064</TD><TD>1.13557</TD><TD>118.928</TD><TD>101.853</TD><TD>0.884143</TD></TR>
+</TABLE>
+</BODY>
+</HTML>
