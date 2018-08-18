@@ -1,0 +1,132 @@
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs  -o xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xo -t hw --platform xilinx:adm-pcie-7v3:1ddr:3.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for hardware target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_adm-pcie-7v3_1ddr_3_0/xilinx_adm-pcie-7v3_1ddr_3_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:adm-pcie-7v3:1ddr:3.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/media/diskp1/gitrepo/SDAccel_Examples/xtra/sdx2017.1/bfs_5p_bitmap_nocachev2/_xocc_compile_bfs_bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 204-61] Pipelining loop 'stage0_main.1'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 3.
+INFO: [XOCC 204-61] Pipelining loop 'stage0_main.2'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 2.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 4.
+INFO: [XOCC 204-61] Pipelining loop 'stage1_main'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 3.
+INFO: [XOCC 204-61] Pipelining loop 'stage2_main'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 10, Depth: 13.
+INFO: [XOCC 204-61] Pipelining loop 'stage3_main_L0'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 11.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 2.
+INFO: [XOCC 204-61] Pipelining loop 'squeeze_init'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 1.
+INFO: [XOCC 204-61] Pipelining loop 'squeeze_main'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 3, Depth: 5.
+INFO: [XOCC 204-61] Pipelining loop 'squeeze_init'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 1.
+INFO: [XOCC 204-61] Pipelining loop 'squeeze_main'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 3, Depth: 5.
+INFO: [XOCC 204-61] Pipelining loop 'squeeze_init'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 1.
+INFO: [XOCC 204-61] Pipelining loop 'squeeze_main'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 3, Depth: 5.
+INFO: [XOCC 204-61] Pipelining loop 'squeeze_init'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 1.
+INFO: [XOCC 204-61] Pipelining loop 'squeeze_main'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 3, Depth: 5.
+INFO: [XOCC 204-61] Pipelining loop 'squeeze_init'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 1.
+INFO: [XOCC 204-61] Pipelining loop 'squeeze_main'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 3, Depth: 5.
+INFO: [XOCC 204-61] Pipelining loop 'squeeze_init'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 1.
+INFO: [XOCC 204-61] Pipelining loop 'squeeze_main'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 3, Depth: 5.
+INFO: [XOCC 204-61] Pipelining loop 'squeeze_init'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 1.
+INFO: [XOCC 204-61] Pipelining loop 'squeeze_main'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 3, Depth: 5.
+INFO: [XOCC 204-61] Pipelining loop 'squeeze_init'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 1.
+INFO: [XOCC 204-61] Pipelining loop 'squeeze_main'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 3, Depth: 5.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 60-594] Finished kernel compilation
+Add Instance bfs_stage2 bfs_stage2_U0 1082
+Add Instance bfs_stage3 bfs_stage3_U0 1099
+Add Instance bfs_stage0_1 bfs_stage0_1_U0 1115
+Add Instance bfs_squeeze_ciao0 bfs_squeeze_ciao0_U0 1123
+Add Instance bfs_squeeze_ciao1 bfs_squeeze_ciao1_U0 1165
+Add Instance bfs_squeeze_ciao2 bfs_squeeze_ciao2_U0 1207
+Add Instance bfs_squeeze_ciao3 bfs_squeeze_ciao3_U0 1249
+Add Instance bfs_squeeze_ciao4 bfs_squeeze_ciao4_U0 1291
+Add Instance bfs_squeeze_ciao5 bfs_squeeze_ciao5_U0 1333
+Add Instance bfs_squeeze_ciao6 bfs_squeeze_ciao6_U0 1375
+Add Instance bfs_squeeze_ciao7 bfs_squeeze_ciao7_U0 1417
+Add Instance bfs_stage0 bfs_stage0_U0 1459
+Add Instance bfs_stage1 bfs_stage1_U0 1468
+Add Instance update_depth131 update_depth131_U0 1488
+Add Instance update_depth132 update_depth132_U0 1498
+Add Instance update_depth133 update_depth133_U0 1508
+Add Instance update_depth134 update_depth134_U0 1518
+Add Instance update_depth135 update_depth135_U0 1528
+Add Instance update_depth136 update_depth136_U0 1538
+Add Instance update_depth137 update_depth137_U0 1548
+Add Instance update_depth update_depth_U0 1558
+Add Instance split_ciao split_ciao_U0 1568
+Add Instance Block_proc15439 Block_proc15439_U0 1590
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 2m 27s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin -t hw --platform xilinx:adm-pcie-7v3:1ddr:3.0 xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for hardware target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_adm-pcie-7v3_1ddr_3_0/xilinx_adm-pcie-7v3_1ddr_3_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:adm-pcie-7v3:1ddr:3.0
+INFO: [XOCC 60-251]   Hardware accelerator integration...
+Creating Vivado project and starting FPGA synthesis.
+.....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+Finished 1st of 5 tasks (FPGA synthesis). Elapsed time: 00h 38m 14s.
+.....
+Finished 2nd of 5 tasks (FPGA logic optimization). Elapsed time: 00h 03m 07s.
+........................
+Finished 3rd of 5 tasks (FPGA logic placement). Elapsed time: 00h 11m 04s.
+...........................
+Finished 4th of 5 tasks (FPGA routing). Elapsed time: 04h 09m 49s.
+..
+Finished 5th of 5 tasks (FPGA bitstream generation). Elapsed time: 00h 09m 09s.
+
+WARNING: [XOCC 60-732] Link warning: One or more timing paths failed timing targeting 200 MHz for kernel clock 'KERNEL_CLK'. The frequency is being automatically changed to 140 MHz to enable proper functionality
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 5h 12m 19s

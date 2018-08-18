@@ -1,0 +1,14 @@
+./host 
+vertex num: 1157828
+edge num: 2987624
+Graph is loaded.
+verterNum 1157828 is aligned to 1158144
+soft bfs starts.
+Software bfs takes 0.126439 seconds.
+INFO: Importing xclbin/bfs.hw.xilinx_adm-pcie-7v3_1ddr_3_0.xclbin
+INFO: Loaded file
+INFO: Created Binary
+INFO: Built Program
+hardware bfs takes 0.650511 seconds.
+level = 17
+TEST PASSED.
