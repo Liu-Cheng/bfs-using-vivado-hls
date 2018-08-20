@@ -1,8 +1,8 @@
 /**
- * File              : src/host.cpp
+ * File              : host.cpp
  * Author            : Cheng Liu <st.liucheng@gmail.com>
  * Date              : 14.11.2017
- * Last Modified Date: 13.12.2017
+ * Last Modified Date: 19.08.2018
  * Last Modified By  : Cheng Liu <st.liucheng@gmail.com>
  */
 
@@ -187,24 +187,30 @@ int align(int num, int dataWidth, int alignedWidth){
 	}
 }
 
+int getStartVertexIdx(const std::string &gName)
+{
+	if(gName == "youtube")    return 320872;
+	if(gName == "lj1")        return 3928512;
+	if(gName == "pokec")      return 182045;
+	if(gName == "rmat-19-32") return 104802;
+	if(gName == "rmat-21-32") return 365723;
+	return -1;
+}
+
 int main(int argc, char **argv) {
 	std::clock_t begin;
 	std::clock_t end;
 	double elapsedTime;
 
-	int startVertexIdx = 365723;
 	std::string gName = "youtube";
-	if(gName == "youtube") startVertexIdx = 320872;
-	if(gName == "lj1") startVertexIdx = 3928512;
-	if(gName == "pokec") startVertexIdx = 182045;
-	if(gName == "rmat-19-32") startVertexIdx = 104802;
-	if(gName == "rmat-21-32") startVertexIdx = 365723;
+	int startVertexIdx = getStartVertexIdx(gName);
 	Graph* gptr = createGraph(gName);
 	CSR* csr = new CSR(*gptr);
+	//int vertexNum = align(csr->vertexNum, 8, 512*16); 
+	int vertexNum = csr->vertexNum; 
+	//std::cout << "verterNum " << csr->vertexNum << " is aligned to " << vertexNum << std::endl;
 	free(gptr);
 	std::cout << "Graph is loaded." << std::endl;
-	int vertexNum = align(csr->vertexNum, 8, 512*16); 
-	std::cout << "verterNum " << csr->vertexNum << " is aligned to " << vertexNum << std::endl;
 
 	char *hwDepth = (char*)malloc(vertexNum * sizeof(char));
 	char *swDepth = (char*)malloc(vertexNum * sizeof(char));
