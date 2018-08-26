@@ -1,0 +1,128 @@
+66c66
+< #define THREAD_NUM 1
+---
+> #define THREAD_NUM 2
+250c250
+< 		int tid;
+---
+> 		int tidx;
+256,257c256,257
+< 				int col
+< 				) : tupleSize(blkNum), tid(col)
+---
+> 				int cordx
+> 				) : tupleSize(blkNum), tidx(cordx)
+260,261c260,261
+< 			for(int i = 0; i < blkNum; i++){
+< 				blkTuples[i] = blkVec[i * blkNum + col];
+---
+> 			for(int j = 0; j < blkNum; j++){
+> 				blkTuples[j] = blkVec[cordx * blkNum + j];
+267,276c267,274
+< 			for(int i = 0; i < tupleSize; i++){
+< 				CSR_BLOCK* blkPtr = blkTuples[i];
+< 				int srcStart = blkPtr->srcStart;
+< 				int srcEnd = blkPtr->srcEnd;
+< 				std::vector<int> frontier;
+< 				for(int i = 0; i < activeVertexNum[0]; i++){
+< 					int v = activeVertices[i];
+< 					if(v >= srcStart && v < srcEnd){
+< 						frontier.push_back(v);
+< 					}
+---
+> 			int srcStart = blkTuples[0]->srcStart;
+> 			int srcEnd = blkTuples[0]->srcEnd;
+> 
+> 			std::vector<int> frontier;
+> 			for(int i = 0; i < activeVertexNum[0]; i++){
+> 				int v = activeVertices[i];
+> 				if(v >= srcStart && v < srcEnd){
+> 					frontier.push_back(v);
+277a276
+> 			}
+278a278
+> 			for(int i = 0; i < tupleSize; i++){
+279a280
+> 				CSR_BLOCK* blkPtr = blkTuples[i];
+287c288
+< 				}	
+---
+> 				}
+296,306c297,304
+< 	
+< 			for(int j = 0; j < tupleSize; j++){
+< 				CSR_BLOCK* blkPtr = blkTuples[j];	
+< 				int srcStart = blkPtr->srcStart;
+< 				int srcEnd = blkPtr->srcEnd;
+< 				int idx = 0;
+< 				for(int i = 0; i < activeVertexNum[0]; i++){
+< 					int v = activeVertices[i];
+< 					if(v >= srcStart && v < srcEnd){
+< 						blkActiveVertices[idx++] = v;
+< 					}
+---
+> 
+> 			int srcStart = blkTuples[0]->srcStart;
+> 			int srcEnd = blkTuples[0]->srcEnd;
+> 			int idx = 0;
+> 			for(int i = 0; i < activeVertexNum[0]; i++){
+> 				int v = activeVertices[i];
+> 				if(v >= srcStart && v < srcEnd){
+> 					blkActiveVertices[idx++] = v;
+308,309c306,307
+< 				blkActiveVertexNum[0] = idx;
+< 				if(idx == 0) continue;
+---
+> 			}
+> 			blkActiveVertexNum[0] = idx;
+310a309,310
+> 			for(int j = 0; j < tupleSize; j++){
+> 				CSR_BLOCK* blkPtr = blkTuples[j];	
+312,316c312,316
+< 				blkEdgeNum[0]   = blkPtr->edgeNum;
+< 				srcRange[0]     = srcStart;
+< 				srcRange[1]     = srcEnd;
+< 				sinkRange[0]    = blkPtr->sinkStart;
+< 				sinkRange[1]    = blkPtr->sinkEnd;
+---
+> 				blkEdgeNum[0] = blkPtr->edgeNum;
+> 				srcRange[0] = srcStart;
+> 				srcRange[1] = srcEnd;
+> 				sinkRange[0] = blkPtr->sinkStart;
+> 				sinkRange[1] = blkPtr->sinkEnd;
+330a331
+> 				/*
+337a339
+> 				*/
+339d340
+< 				/*
+351d351
+< 				*/
+371,374c371,374
+< 			//fpgaThread = std::thread(&ThreadPool::fpgaThreadFunc, this);
+< 			for(int i = 0; i < THREAD_NUM; i++){
+< 				cpuThread[i]  = std::thread(&ThreadPool::cpuThreadFunc, this);
+< 			}
+---
+> 			fpgaThread = std::thread(&ThreadPool::fpgaThreadFunc, this);
+> 			//for(int i = 0; i < THREAD_NUM; i++){
+> 			//	cpuThread[i]  = std::thread(&ThreadPool::cpuThreadFunc, this);
+> 			//}
+418,421c418,421
+< 			for(int i = 0; i < THREAD_NUM; i++){
+< 				cpuThread[i].join();
+< 			}
+< 			//fpgaThread.join();
+---
+> 			//for(int i = 0; i < THREAD_NUM; i++){
+> 			//	cpuThread[i].join();
+> 			//}
+> 			fpgaThread.join();
+439c439
+< 						std::cout << "CPU has task " << t->tid << " processed." << std::endl;
+---
+> 						std::cout << "CPU has task " << t->tidx << " processed." << std::endl;
+459c459
+< 						std::cout << "FPGA has task " << t->tid << " processed." << std::endl;
+---
+> 						std::cout << "FPGA has task " << t->tidx << " processed." << std::endl;
