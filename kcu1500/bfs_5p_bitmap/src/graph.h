@@ -1,3 +1,23 @@
+/**
+ * File              : graph.h
+ * Date              : 22.08.2018
+ * Last Modified Date: 22.08.2018
+ */
+/**
+ * File              : graph.h
+ * Date              : 22.08.2018
+ * Last Modified Date: 22.08.2018
+ */
+/**
+ * File              : graph.h
+ * Date              : 22.08.2018
+ * Last Modified Date: 22.08.2018
+ */
+/**
+ * File              : graph.h
+ * Date              : 22.08.2018
+ * Last Modified Date: 22.08.2018
+ */
 #ifndef __GRAPH_H__
 #define __GRAPH_H__
 
@@ -58,6 +78,7 @@ class CSR{
     public:
 		const int vertexNum;
 		const int edgeNum;
+		const int padLen;
         std::vector<int> rpao; 
         std::vector<int> ciao;
         std::vector<int> rpai;
@@ -65,7 +86,11 @@ class CSR{
 
         // The CSR is constructed based on the simple graph
         explicit CSR(const Graph &g);
+		explicit CSR(const Graph &g, const int _padLen);
 		~CSR();
+
+	private:
+		int pad(const int &len);
 };
 
 #endif

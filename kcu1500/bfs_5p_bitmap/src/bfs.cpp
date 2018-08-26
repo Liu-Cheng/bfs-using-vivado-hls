@@ -26,31 +26,38 @@ typedef ap_int<512> int512_dt;
 
 // read frontier 
 static void read_frontier(
-		const int             *frontier, 
+		int                   *frontier, 
+        int                   *frontier_size,
 		hls::stream<int>      &frontier_stream,
 		hls::stream<uint1_dt> &frontier_done_stream,
-        const int             frontier_size
+		const int             seg_size,
+		const int             pad
 		)
 {
 	int buffer[BUFFER_SIZE];
     read_frontier:
-    for (int i = 0; i < frontier_size; i += BUFFER_SIZE){
-		int len = BUFFER_SIZE;
-		if(i + BUFFER_SIZE > frontier_size){
-			len = frontier_size - i;
-		}
+	for(int s = 0; s < pad; s++){
+		int size = frontier_size[s]; 
+		int base = seg_size * s;
+		if(size > 0){
+			for (int i = 0; i < size; i += BUFFER_SIZE){
+				int len = BUFFER_SIZE;
+				if(i + BUFFER_SIZE > size){
+					len = size - i;
+				}
 
-		for(int j = 0; j < len; j++){
-        #pragma HLS pipeline II=1
-			buffer[j] = frontier[i + j];
-		}
+				for(int j = 0; j < len; j++){
+                #pragma HLS pipeline II=1
+					buffer[j] = frontier[base + i + j];
+				}
 
-		for(int j = 0; j < len; j++){
-        #pragma HLS pipeline II=1
-			frontier_stream << buffer[j];
+				for(int j = 0; j < len; j++){
+                #pragma HLS pipeline II=1
+					frontier_stream << buffer[i + j];
+				}
+			}
 		}
 	}
-
 	frontier_done_stream << 1;
 }
 
@@ -392,6 +399,7 @@ static void write_frontier(
 extern "C" {
 void bfs(
 		const int       *frontier,
+		const int       *frontier_size
 		const int64_dt  *rpa, 
 		const int512_dt *cia,
 
@@ -435,7 +443,8 @@ void bfs(
 		const char      level
 		)
 {
-#pragma HLS INTERFACE m_axi port=frontier             offset=slave bundle=gmem0
+#pragma HLS INTERFACE m_axi port=frontier             offset=slave bundle=gmem00
+#pragma HLS INTERFACE m_axi port=frontier_size        offset=slave bundle=gmem01
 #pragma HLS INTERFACE m_axi port=rpa                  offset=slave bundle=gmem1
 #pragma HLS INTERFACE m_axi port=cia                  offset=slave bundle=gmem2
 #pragma HLS INTERFACE m_axi port=next_frontier0       offset=slave bundle=gmem30
@@ -471,7 +480,6 @@ void bfs(
 #pragma HLS INTERFACE m_axi port=next_frontier_size14 offset=slave bundle=gmem4e
 #pragma HLS INTERFACE m_axi port=next_frontier_size15 offset=slave bundle=gmem4f
 
-#pragma HLS INTERFACE s_axilite port=frontier_size    bundle=control
 #pragma HLS INTERFACE s_axilite port=root_vidx        bundle=control
 #pragma HLS INTERFACE s_axilite port=seg_size         bundle=control
 #pragma HLS INTERFACE s_axilite port=level            bundle=control
@@ -555,7 +563,7 @@ hls::stream<uint1_dt>  next_frontier_done_stream15;
 #pragma HLS STREAM variable=next_frontier_done_stream15 depth=4
 
 #pragma HLS dataflow
-read_frontier(frontier, frontier_stream, frontier_done_stream, frontier_size);
+read_frontier(frontier, frontier_size, frontier_stream, frontier_done_stream, seg_size, pad);
 read_csr(rpa, cia, frontier_stream, frontier_done_stream, cia_stream, cia_done_stream);
 traverse_cia(
 		cia_stream,

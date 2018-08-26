@@ -85,24 +85,92 @@ Graph::Graph(const std::string& gName){
     }
 }
 
-CSR::CSR(const Graph &g) : vertexNum(g.vertexNum), edgeNum(g.edgeNum){
-    rpao.resize(vertexNum+1);
-    rpai.resize(vertexNum+1);
-    rpao[0] = 0;
-    rpai[0] = 0;
-    for(int i = 0; i < vertexNum; i++){
-        rpao[i+1] = rpao[i] + g.vertices[i]->outDeg;
-        rpai[i+1] = rpai[i] + g.vertices[i]->inDeg;
-    }
+CSR::CSR(const Graph &g) 
+	: vertexNum(g.vertexNum), edgeNum(g.edgeNum)
+{
+    rpao.resize(2 * vertexNum);
+    rpai.resize(2 * vertexNum);
+    for(int i = 0; i < vertexNum; i++)
+	{
+		int outDeg = g.vertices[i]->outDeg;
+		int inDeg  = g.vertices[i]->inDeg;
+		if(i == 0)
+		{
+			rpao[2 * i] = 0;
+			rpai[2 * i] = 0;
+		}
+		else
+		{
+			rpao[2 * i] = rpao[2 * (i - 1)] + rpao[2 * (i - 1) + 1];
+			rpai[2 * i] = rpai[2 * (i - 1)] + rpai[2 * (i - 1) + 1];
+		}
 
-    for(int i = 0; i < vertexNum; i++){
-        for(auto id : g.vertices[i]->outVid){
-            ciao.push_back(id);
+		rpao[2 * i + 1] = outDeg;
+		rpai[2 * i + 1] = inDeg;
+
+		for(auto vid : g.vertices[i]->outVid){
+            ciao.push_back(vid);
         }
-        for(auto id : g.vertices[i]->inVid){
-            ciai.push_back(id);
+        for(auto vid : g.vertices[i]->inVid){
+            ciai.push_back(vid);
         }
+
     }
 }
 
+int CSR::pad(const int &len)
+{
+	if(len%padLen == 0) return len;
+	else return ((len/padLen + 1) * padLen);
+}
+
+CSR::CSR(const Graph &g, const int &padLen) : 
+	vertexNum(g.vertexNum), edgeNum(g.edgeNum), padLen(_padLen)
+{
+	rpao.resize(2 * vertexNum);
+	rpai.resize(2 * vertexNum);
+	for(int i = 0; i < vertexNum; i++)
+	{
+		if(i == 0)
+		{
+			rpao[2 * i] = 0;
+			rpai[2 * i] = 0
+		}
+		else
+		{
+			rpao[2 * i] = rpao[2 * (i - 1)] + rpao[2 * (i - 1) + 1];
+			rpai[2 * i] = rpai[2 * (i - 1)] + rpai[2 * (i - 1) + 1];
+		}
+
+		// update rpao and ciao
+		int len = g.vertices[i]->outDeg;
+		int paddedLen = pad(len);
+		rpao[2 * i + 1] = paddedLen;
+
+        for(int j = 0; j < paddedLen; j++)
+		{
+			if(j < len){
+				ciao.push_back(g.vertices[i]->outVid[j]);
+			}
+			else{
+				ciao.push_back(-1);
+			}
+		}
+
+		// update rpai and ciai
+		len =  g.vertices[i]->inDeg;
+		paddedLen = pad(len);
+		rpai[2 * i + 1] = paddedLen;
+
+		for(int j = 0; j < paddedLen; j++)
+		{
+			if(j < len){
+				ciai.push_back(g.vertices[i]->inVid[j]);
+			}
+			else{
+				ciai.push_back(-1);
+			}
+		}
+	}
+} 
 

@@ -2,7 +2,7 @@
  * File              : host.cpp
  * Author            : Cheng Liu <st.liucheng@gmail.com>
  * Date              : 14.11.2017
- * Last Modified Date: 19.08.2018
+ * Last Modified Date: 20.08.2018
  * Last Modified By  : Cheng Liu <st.liucheng@gmail.com>
  */
 
@@ -108,8 +108,10 @@ void swBfs(CSR* csr, char* depth, const int &vertexIdx){
 				frontier.push_back(i);
 				for(int cidx = csr->rpao[i]; cidx < csr->rpao[i+1]; cidx++){
 					int ongb = csr->ciao[cidx];
-					if(depth[ongb] == -1){
-						depth[ongb] = level + 1;
+					if(ongb != -1){
+						if(depth[ongb] == -1){
+							depth[ongb] = level + 1;
+						}
 					}
 				}
 			}
@@ -154,27 +156,6 @@ int verify(char* swDepth, char* hwDepth, const int &num){
 	}
 }
 
-int getTotalHubVertexNum(CSR* csr, int degreeThreshold){
-	int outHubVertexNum = 0;
-	int inHubVertexNum = 0;
-	for(size_t i = 1; i < csr->rpao.size(); i++){
-		if(csr->rpao[i] - csr->rpao[i - 1] > degreeThreshold){
-			outHubVertexNum++;
-		}
-	}
-
-	for(size_t i = 1; i < csr->rpai.size(); i++){
-		if(csr->rpai[i] - csr->rpai[i - 1] > degreeThreshold){
-			inHubVertexNum++;
-		}
-	}
-
-	std::cout << "HubVertexNum(out): " << outHubVertexNum << std::endl;
-	std::cout << "HubVertexNum(in): " << inHubVertexNum << std::endl;
-
-	return outHubVertexNum;
-}
-
 int align(int num, int dataWidth, int alignedWidth){
 	if(dataWidth > alignedWidth){
 		std::cout << "Aligning to smaller data width is not supported." << std::endl;
@@ -202,23 +183,34 @@ int main(int argc, char **argv) {
 	std::clock_t end;
 	double elapsedTime;
 
+	int pad = 16;
+	int frontierSize = 1;	
 	std::string gName = "youtube";
-	int startVertexIdx = getStartVertexIdx(gName);
+	int startVertexIdx     = getStartVertexIdx(gName);
+	char *hwDepth          = (char*)malloc(vertexNum * sizeof(char));
+	char *swDepth          = (char*)malloc(vertexNum * sizeof(char));
+	int  *frontier         = (int *)malloc(vertexNum * sizeof(int));
+	int  *frontierSize     = (int *)malloc(pad * sizeof(int));
+	int  *nextFrontier     = (int *)malloc(vertexNum * sizeof(int));
+	int  *nextFrontierSize = (int *)malloc(pad * sizeof(int));
+	for(int i = 0; i < pad; i++){
+		frontierSize[i] = 0;
+	}
+	frontier[0]            = startVertexIdx;
+	frontierSize[0]        = 1;
+
+	// Load padded graph data to memory
 	Graph* gptr = createGraph(gName);
-	CSR* csr = new CSR(*gptr);
-	//int vertexNum = align(csr->vertexNum, 8, 512*16); 
+	CSR* csr = new CSR(*gptr, pad);
 	int vertexNum = csr->vertexNum; 
-	//std::cout << "verterNum " << csr->vertexNum << " is aligned to " << vertexNum << std::endl;
+	int rpaoSize = (int)(csr->rpao.size());
+	int ciaoSize = (int)(csr->ciao.size());
+	int segSize  = (vertexNum + pad - 1) / pad;
+	char level   = 0;
 	free(gptr);
 	std::cout << "Graph is loaded." << std::endl;
 
-	char *hwDepth = (char*)malloc(vertexNum * sizeof(char));
-	char *swDepth = (char*)malloc(vertexNum * sizeof(char));
-
-	int frontierSize = 1;	
-	int ciaoSize = align(csr->ciao.size(), 32, 512);
-	int rpaoSize = align(csr->rpao.size(), 32, 512);
-
+	// software bfs
 	std::cout << "soft bfs starts." << std::endl;
 	swBfsInit(vertexNum, swDepth, startVertexIdx);
 	begin = clock();
@@ -234,41 +226,183 @@ int main(int argc, char **argv) {
 	cl_kernel krnl_bfs = xcl_get_kernel(program, "bfs");
 
     // Transfer data from system memory over PCIe to the FPGA on-board DDR memory.
-    cl_mem devMemRpao = xcl_malloc(world, CL_MEM_READ_ONLY, rpaoSize * sizeof(int));
-	cl_mem devMemCiao = xcl_malloc(world, CL_MEM_READ_ONLY, ciaoSize * sizeof(int));
-    cl_mem devMemDepth = xcl_malloc(world, CL_MEM_READ_WRITE, vertexNum * sizeof(char));
-    cl_mem devMemFrontierSize = xcl_malloc(world, CL_MEM_WRITE_ONLY, sizeof(int));
+    cl_mem devMemRpao  = xcl_malloc(world, CL_MEM_READ_ONLY,  rpaoSize  * sizeof(int));
+	cl_mem devMemCiao  = xcl_malloc(world, CL_MEM_READ_ONLY,  ciaoSize  * sizeof(int));
+    cl_mem devMemFrontier = xcl_malloc(world, CL_MEM_READ_ONLY, vertexNum * sizeof(int));
+    cl_mem devMemNextFrontier = xcl_malloc(world, CL_MEM_WRITE_ONLY, vertexNum * sizeof(int));
+    cl_mem devMemNextFrontierSize = xcl_malloc(world, CL_MEM_WRITE_ONLY, pad * sizeof(int));
     xcl_memcpy_to_device(world, devMemRpao, csr->rpao.data(), csr->rpao.size() * sizeof(int));
     xcl_memcpy_to_device(world, devMemCiao, csr->ciao.data(), csr->ciao.size() * sizeof(int));
-	xcl_memcpy_to_device(world, devMemDepth, hwDepth, vertexNum * sizeof(char));
+    xcl_memcpy_to_device(world, devMemFrontier, frontier, vertexNum * sizeof(int));
 
 	int nargs = 0;
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemDepth);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemDepth);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemDepth);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemDepth);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemDepth);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemDepth);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemDepth);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemDepth);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemDepth);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemRpao);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
 	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemRpao);
 	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemCiao);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(int), &vertexNum);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(int), &startVertexIdx);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(int),    &startVertexIdx);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(int),    &segSize);
+	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(char),   &level);
 
-	char level = 0;
 	begin = clock();
-	while(frontierSize != 0){
-		xcl_set_kernel_arg(krnl_bfs, nargs, sizeof(char), &level);
-		xcl_run_kernel3d(world, krnl_bfs, 1, 1, 1);
-		xcl_memcpy_from_device(world, &frontierSize, devMemFrontierSize, sizeof(int));
+	bool direction = true;
+	while(totalFrontierSize != 0){
+		if(direction){
+			int nargs = 0;
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemRpao);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemCiao);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(int),    &startVertexIdx);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(int),    &segSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(char),   &level);
+			xcl_set_kernel_arg(krnl_bfs, nargs, sizeof(char), &level);
+			xcl_run_kernel3d(world, krnl_bfs, 1, 1, 1);
+			xcl_memcpy_from_device(world, nextFrontierSize, devMemNextFrontierSize, pad * sizeof(int));
+			for(int i = 0; i < pad; i++){
+				if(nextFrontierSize > 0){
+					xcl_memcpy_from_device(world, nextFrontierSize, devMemNextFrontierSize, pad * sizeof(int));
+					for(int j = 0; j < nextFrontierSize[i]; j++){
+						int vtmp = nextFrontier[j];
+						hwDepth[vtmp] = level + 1;
+					}
+				}
+			}
+
+			totalFrontierSize = 0;
+			for(int i = 0; i < pad; i++){
+				totalFrontierSize += nextFrontierSize[i];
+			}
+			direction = false;
+		}
+		else{
+			int nargs = 0;
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemRpao);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemCiao);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(int),    &startVertexIdx);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(int),    &segSize);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(char),   &level);
+			xcl_set_kernel_arg(krnl_bfs, nargs,   sizeof(char),   &level);
+			xcl_run_kernel3d(world, krnl_bfs, 1, 1, 1);
+			xcl_memcpy_from_device(world, frontierSize, devMemFrontierSize, pad * sizeof(int));
+			for(int i = 0; i < pad; i++){
+				if(totalFrontierSize > 0){
+					xcl_memcpy_from_device(world, frontierSize, devMemFrontierSize, pad * sizeof(int));
+					for(int j = 0; j < frontierSize[i]; j++){
+						int vtmp = frontier[j];
+						hwDepth[vtmp] = level + 1;
+					}
+				}
+			}
+
+			totalFrontierSize = 0;
+			for(int i = 0; i < pad; i++){
+				totalFrontierSize += frontierSize[i];
+			}
+			direction = true;
+		}
+
 		level++;
 	}
 	clFinish(world.command_queue);
-	xcl_memcpy_from_device(world, hwDepth, devMemDepth, vertexNum * sizeof(char));
 	end = clock();
 	elapsedTime = (end - begin)*1.0/CLOCKS_PER_SEC;
 	std::cout << "hardware bfs takes " << elapsedTime << " seconds." << std::endl;
@@ -276,7 +410,9 @@ int main(int argc, char **argv) {
 	
 	clReleaseMemObject(devMemRpao);
 	clReleaseMemObject(devMemCiao);
-	clReleaseMemObject(devMemDepth);
+	clReleaseMemObject(devMemNextFrontier);
+	clReleaseMemObject(devMemNextFrontierSize);
+	clReleaseMemObject(devMemFrontier);
 	clReleaseMemObject(devMemFrontierSize);
 	clReleaseKernel(krnl_bfs);
 	clReleaseProgram(program);
@@ -284,6 +420,10 @@ int main(int argc, char **argv) {
 
 	verify(swDepth, hwDepth, csr->vertexNum);
 	free(csr);
+	free(frontier);
+	free(nextFrontier);
+	free(frontierSize);
+	free(nextFrontierSize);
 	free(swDepth);
 	free(hwDepth);
 
