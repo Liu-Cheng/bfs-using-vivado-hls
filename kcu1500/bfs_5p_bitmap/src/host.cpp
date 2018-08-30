@@ -13,66 +13,36 @@
 #include <vector>
 #include <ctime>
 
+
+#define HERE do {std::cout << "File: " << __FILE__ << " Line: " << __LINE__ << std::endl;} while(0)
+
 static const char *error_message =
     "Error: Result mismatch:\n"
     "i = %d CPU result = %d Device result = %d\n";
 
-#define OCL_CHECK(call)                                                        \
-	do {                                                                       \
-		cl_int err = call;                                                     \
-		if (err != CL_SUCCESS) {                                               \
-			printf("Error calling " #call ", error: %s\n", oclErrorCode(err)); \
-			exit(EXIT_FAILURE);                                                \
-		}                                                                      \
-	} while (0);
-
 Graph* createGraph(const std::string &gName){
-	Graph* gptr;
-	if(gName == "dblp"){
-		gptr = new Graph("/home/liucheng/gitrepo/graph-data/dblp.ungraph.txt");
-	}
-	else if(gName == "youtube"){
-		gptr = new Graph("/home/liucheng/gitrepo/graph-data/youtube.ungraph.txt");
-	}
-	else if(gName == "lj"){
-		gptr = new Graph("/home/liucheng/gitrepo/graph-data/lj.ungraph.txt");
-	}
-	else if(gName == "pokec"){
-		gptr = new Graph("/home/liucheng/gitrepo/graph-data/pokec-relationships.txt");
-	}
-	else if(gName == "wiki-talk"){
-		gptr = new Graph("/home/liucheng/gitrepo/graph-data/wiki-Talk.txt");
-	}
-	else if(gName == "lj1"){
-		gptr = new Graph("/home/liucheng/gitrepo/graph-data/LiveJournal1.txt");
-	}
-	else if(gName == "orkut"){
-		gptr = new Graph("/home/liucheng/gitrepo/graph-data/orkut.ungraph.txt");
-	}
-	else if(gName == "rmat-21-32"){
-		gptr = new Graph("/home/liucheng/gitrepo/graph-data/rmat-21-32.txt");
-	}
-	else if(gName == "rmat-19-32"){
-		gptr = new Graph("/home/liucheng/gitrepo/graph-data/rmat-19-32.txt");
-	}
-	else if(gName == "rmat-21-128"){
-		gptr = new Graph("/home/liucheng/gitrepo/graph-data/rmat-21-128.txt");
-	}
-	else if(gName == "twitter"){
-		gptr = new Graph("/home/liucheng/gitrepo/graph-data/twitter_rv.txt");
-	}
-	else if(gName == "friendster"){
-		gptr = new Graph("/home/liucheng/gitrepo/graph-data/friendster.ungraph.txt");
-	}
-	else if(gName == "example"){
-		gptr = new Graph("/home/liucheng/gitrepo/graph-data/rmat-1k-10k.txt");
-	}
-	else{
+	std::string dir = "/home/liucheng/graph-data/";
+	std::string fName;
+
+	if     (gName == "dblp")        fName = "dblp.ungraph.txt";
+	else if(gName == "youtube")     fName = "youtube.ungraph.txt";
+	else if(gName == "lj")          fName = "lj.ungraph.txt";
+	else if(gName == "pokec")       fName = "pokec-relationships.txt";
+	else if(gName == "wiki-talk")   fName = "wiki-Talk.txt";
+	else if(gName == "lj1")         fName = "LiveJournal1.txt";
+	else if(gName == "orkut")       fName = "orkut.ungraph.txt";
+	else if(gName == "rmat-21-32")  fName = "rmat-21-32.txt";
+	else if(gName == "rmat-19-32")  fName = "rmat-19-32.txt";
+	else if(gName == "rmat-21-128") fName = "rmat-21-128.txt";
+	else if(gName == "twitter")     fName = "twitter_rv.txt";
+	else if(gName == "friendster")  fName = "friendster.ungraph.txt";
+	else {
 		std::cout << "Unknown graph name." << std::endl;
 		exit(EXIT_FAILURE);
 	}
 
-	return gptr;
+	std::string fpath = dir + fName;
+	return new Graph(fpath.c_str());
 }
 
 void swBfsInit(int vertexNum, char* depth, const int &vertexIdx){
@@ -103,11 +73,14 @@ void swBfs(CSR* csr, char* depth, const int &vertexIdx){
 	std::vector<int> frontier;
 	char level = 0;
 	while(true){
+		std::cout << "software bfs: level = " << (int)level << std::endl;
 		for(int i = 0; i < csr->vertexNum; i++){
 			if(depth[i] == level){
 				frontier.push_back(i);
-				for(int cidx = csr->rpao[i]; cidx < csr->rpao[i+1]; cidx++){
-					int ongb = csr->ciao[cidx];
+				int start = csr->rpao[2 * i];
+				int num   = csr->rpao[2 * i + 1];
+				for(int cidx = 0; cidx < num; cidx++){
+					int ongb = csr->ciao[start + cidx];
 					if(ongb != -1){
 						if(depth[ongb] == -1){
 							depth[ongb] = level + 1;
@@ -120,6 +93,7 @@ void swBfs(CSR* csr, char* depth, const int &vertexIdx){
 		if(frontier.empty()){
 			break;
 		}
+		std::cout << "software bfs: frontier.size() " << frontier.size() << std::endl;
 
 		level++;
 		frontier.clear();
@@ -178,14 +152,33 @@ int getStartVertexIdx(const std::string &gName)
 	return -1;
 }
 
+// Sum the array
+int getSum(int *ptr, int num)
+{	
+	if(ptr == nullptr) return EXIT_FAILURE;
+	int sum = 0;
+	for(int i = 0; i < num; i++){
+		sum += ptr[i];
+	}
+	return sum;
+}
+
 int main(int argc, char **argv) {
 	std::clock_t begin;
 	std::clock_t end;
 	double elapsedTime;
 
 	int pad = 16;
-	int frontierSize = 1;	
 	std::string gName = "youtube";
+
+	// Load padded graph data to memory
+	Graph* gptr = createGraph(gName);
+	CSR* csr = new CSR(*gptr, pad);
+	int vertexNum = csr->vertexNum; 
+	int rpaoSize = (int)(csr->rpao.size());
+	int ciaoSize = (int)(csr->ciao.size());
+	int segSize  = (vertexNum + pad - 1) / pad;
+	char level   = 0;
 	int startVertexIdx     = getStartVertexIdx(gName);
 	char *hwDepth          = (char*)malloc(vertexNum * sizeof(char));
 	char *swDepth          = (char*)malloc(vertexNum * sizeof(char));
@@ -196,17 +189,13 @@ int main(int argc, char **argv) {
 	for(int i = 0; i < pad; i++){
 		frontierSize[i] = 0;
 	}
-	frontier[0]            = startVertexIdx;
-	frontierSize[0]        = 1;
-
-	// Load padded graph data to memory
-	Graph* gptr = createGraph(gName);
-	CSR* csr = new CSR(*gptr, pad);
-	int vertexNum = csr->vertexNum; 
-	int rpaoSize = (int)(csr->rpao.size());
-	int ciaoSize = (int)(csr->ciao.size());
-	int segSize  = (vertexNum + pad - 1) / pad;
-	char level   = 0;
+	int bankIdx = startVertexIdx & 0xF;
+	std::cout << "root_vidx: " << startVertexIdx << std::endl;
+	std::cout << "bankIdx: " << bankIdx << std::endl;
+	HERE;
+	frontier[bankIdx * segSize] = startVertexIdx;
+	frontierSize[bankIdx]  = 1;
+	int totalFrontierSize  = 1;
 	free(gptr);
 	std::cout << "Graph is loaded." << std::endl;
 
@@ -222,63 +211,26 @@ int main(int argc, char **argv) {
 	hwBfsInit(vertexNum, hwDepth, startVertexIdx);
 
 	xcl_world world = xcl_world_single();
-    cl_program program = xcl_import_binary(world, "bfs");
+	cl_program program = xcl_import_binary(world, "bfs");
 	cl_kernel krnl_bfs = xcl_get_kernel(program, "bfs");
 
-    // Transfer data from system memory over PCIe to the FPGA on-board DDR memory.
-    cl_mem devMemRpao  = xcl_malloc(world, CL_MEM_READ_ONLY,  rpaoSize  * sizeof(int));
+	// Transfer data from system memory over PCIe to the FPGA on-board DDR memory.
+	cl_mem devMemRpao  = xcl_malloc(world, CL_MEM_READ_ONLY,  rpaoSize  * sizeof(int));
 	cl_mem devMemCiao  = xcl_malloc(world, CL_MEM_READ_ONLY,  ciaoSize  * sizeof(int));
-    cl_mem devMemFrontier = xcl_malloc(world, CL_MEM_READ_ONLY, vertexNum * sizeof(int));
-    cl_mem devMemNextFrontier = xcl_malloc(world, CL_MEM_WRITE_ONLY, vertexNum * sizeof(int));
-    cl_mem devMemNextFrontierSize = xcl_malloc(world, CL_MEM_WRITE_ONLY, pad * sizeof(int));
-    xcl_memcpy_to_device(world, devMemRpao, csr->rpao.data(), csr->rpao.size() * sizeof(int));
-    xcl_memcpy_to_device(world, devMemCiao, csr->ciao.data(), csr->ciao.size() * sizeof(int));
-    xcl_memcpy_to_device(world, devMemFrontier, frontier, vertexNum * sizeof(int));
-
-	int nargs = 0;
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemRpao);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemCiao);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontier);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(int),    &startVertexIdx);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(int),    &segSize);
-	xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(char),   &level);
-
+	cl_mem devMemFrontier = xcl_malloc(world, CL_MEM_READ_WRITE, vertexNum * sizeof(int));
+	cl_mem devMemFrontierSize = xcl_malloc(world, CL_MEM_READ_WRITE, pad * sizeof(int));
+	cl_mem devMemNextFrontier = xcl_malloc(world, CL_MEM_READ_WRITE, vertexNum * sizeof(int));
+	cl_mem devMemNextFrontierSize = xcl_malloc(world, CL_MEM_READ_WRITE, pad * sizeof(int));
+	xcl_memcpy_to_device(world, devMemRpao, csr->rpao.data(), rpaoSize * sizeof(int));
+	xcl_memcpy_to_device(world, devMemCiao, csr->ciao.data(), ciaoSize * sizeof(int));
+	xcl_memcpy_to_device(world, devMemFrontier, frontier, vertexNum * sizeof(int));
+	xcl_memcpy_to_device(world, devMemFrontierSize, frontierSize, pad * sizeof(int));
+	
 	begin = clock();
 	bool direction = true;
-	while(totalFrontierSize != 0){
+	std::cout << "Ready for launching the kernel." << std::endl;
+	while(totalFrontierSize > 0){
+		std::cout << "level = " << (int)level << std::endl;
 		if(direction){
 			int nargs = 0;
 			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontier);
@@ -319,25 +271,25 @@ int main(int argc, char **argv) {
 			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemNextFrontierSize);
 			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(int),    &startVertexIdx);
 			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(int),    &segSize);
-			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(char),   &level);
-			xcl_set_kernel_arg(krnl_bfs, nargs, sizeof(char), &level);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(int),    &pad);
+			xcl_set_kernel_arg(krnl_bfs, nargs,   sizeof(char),   &level);
 			xcl_run_kernel3d(world, krnl_bfs, 1, 1, 1);
-			xcl_memcpy_from_device(world, nextFrontierSize, devMemNextFrontierSize, pad * sizeof(int));
+			xcl_memcpy_from_device(world, nextFrontierSize, devMemNextFrontierSize, pad * sizeof(int));	
+			xcl_memcpy_from_device(world, nextFrontier, devMemNextFrontier, vertexNum * sizeof(int));
+
 			for(int i = 0; i < pad; i++){
-				if(nextFrontierSize > 0){
-					xcl_memcpy_from_device(world, nextFrontierSize, devMemNextFrontierSize, pad * sizeof(int));
+				if(nextFrontierSize[i] > 0){
 					for(int j = 0; j < nextFrontierSize[i]; j++){
-						int vtmp = nextFrontier[j];
+						int vtmp = nextFrontier[i * segSize + j];
 						hwDepth[vtmp] = level + 1;
 					}
 				}
 			}
 
-			totalFrontierSize = 0;
-			for(int i = 0; i < pad; i++){
-				totalFrontierSize += nextFrontierSize[i];
-			}
+			totalFrontierSize = getSum(nextFrontierSize, pad);
 			direction = false;
+			std::cout << "total next frontier size: " << totalFrontierSize << std::endl;	
+
 		}
 		else{
 			int nargs = 0;
@@ -379,25 +331,26 @@ int main(int argc, char **argv) {
 			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(cl_mem), &devMemFrontierSize);
 			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(int),    &startVertexIdx);
 			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(int),    &segSize);
-			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(char),   &level);
+			xcl_set_kernel_arg(krnl_bfs, nargs++, sizeof(int),    &pad);
 			xcl_set_kernel_arg(krnl_bfs, nargs,   sizeof(char),   &level);
 			xcl_run_kernel3d(world, krnl_bfs, 1, 1, 1);
 			xcl_memcpy_from_device(world, frontierSize, devMemFrontierSize, pad * sizeof(int));
+			xcl_memcpy_from_device(world, frontier, devMemFrontier, vertexNum * sizeof(int));
+			
 			for(int i = 0; i < pad; i++){
-				if(totalFrontierSize > 0){
-					xcl_memcpy_from_device(world, frontierSize, devMemFrontierSize, pad * sizeof(int));
+				if(frontierSize[i] > 0){
 					for(int j = 0; j < frontierSize[i]; j++){
-						int vtmp = frontier[j];
+						int vtmp = frontier[i * segSize + j];
 						hwDepth[vtmp] = level + 1;
 					}
 				}
+				
 			}
 
-			totalFrontierSize = 0;
-			for(int i = 0; i < pad; i++){
-				totalFrontierSize += frontierSize[i];
-			}
+			totalFrontierSize = getSum(frontierSize, pad);
+			std::cout << "total frontier size: " << totalFrontierSize << std::endl;
 			direction = true;
+
 		}
 
 		level++;

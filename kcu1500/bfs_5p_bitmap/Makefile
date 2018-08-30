@@ -14,7 +14,7 @@ EXES=host
 
 # Kernel
 bfs_SRCS=./src/bfs.cpp
-bfs_CLFLAGS= -k bfs
+bfs_CLFLAGS= -k bfs 
 
 XOS=bfs
 
@@ -26,7 +26,7 @@ XCLBINS=bfs
 # check
 check_EXE=host
 check_XCLBINS=bfs
-DEVICES=xilinx:adm-pcie-7v3:1ddr:3.0
+DEVICES=xilinx:kcu1500:4ddr-xpr:4.0
 TARGETS=hw
 
 CHECKS=check

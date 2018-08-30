@@ -1,23 +1,3 @@
-/**
- * File              : graph.h
- * Date              : 22.08.2018
- * Last Modified Date: 22.08.2018
- */
-/**
- * File              : graph.h
- * Date              : 22.08.2018
- * Last Modified Date: 22.08.2018
- */
-/**
- * File              : graph.h
- * Date              : 22.08.2018
- * Last Modified Date: 22.08.2018
- */
-/**
- * File              : graph.h
- * Date              : 22.08.2018
- * Last Modified Date: 22.08.2018
- */
 #ifndef __GRAPH_H__
 #define __GRAPH_H__
 
@@ -86,7 +66,7 @@ class CSR{
 
         // The CSR is constructed based on the simple graph
         explicit CSR(const Graph &g);
-		explicit CSR(const Graph &g, const int _padLen);
+		explicit CSR(const Graph &g, const int &_padLen);
 		~CSR();
 
 	private:

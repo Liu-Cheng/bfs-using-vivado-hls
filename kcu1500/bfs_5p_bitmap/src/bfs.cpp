@@ -28,7 +28,7 @@ typedef ap_int<512> int512_dt;
 static void read_frontier(
 		int                   *frontier, 
         int                   *frontier_size,
-		hls::stream<int>      &frontier_stream,
+		hls::stream<int32_dt> &frontier_stream,
 		hls::stream<uint1_dt> &frontier_done_stream,
 		const int             seg_size,
 		const int             pad
@@ -53,23 +53,25 @@ static void read_frontier(
 
 				for(int j = 0; j < len; j++){
                 #pragma HLS pipeline II=1
-					frontier_stream << buffer[i + j];
+					frontier_stream << buffer[j];
 				}
 			}
 		}
 	}
 	frontier_done_stream << 1;
+
 }
 
 // Read rpa of the frontier 
 static void read_csr(
 		const int64_dt          *rpa,
 		const int512_dt         *cia,
-		hls::stream<int>        &frontier_stream,
+		hls::stream<int32_dt>   &frontier_stream,
 		hls::stream<uint1_dt>   &frontier_done_stream,
 		hls::stream<int512_dt>  &cia_stream,
 		hls::stream<uint1_dt>   &cia_done_stream)
 {
+	
 	uint1_dt frontier_empty = 0;
 	uint1_dt done_empty = 0;
 	uint1_dt done = 0;
@@ -84,8 +86,8 @@ static void read_csr(
 		if(frontier_empty != 1){
 			int32_dt vidx  = frontier_stream.read();
 			int64_dt word  = rpa[vidx];
-			int32_dt start = (word.range(63, 32)) >> 4;
-			int32_dt num   = (word.range(31, 0))  >> 4;
+			int32_dt num   = (word.range(63, 32)) >> 4;
+			int32_dt start = (word.range(31, 0))  >> 4;
 
 			for(int i = 0; i < num; i++){
 				cia_stream << cia[start + i];
@@ -139,7 +141,7 @@ static void traverse_cia(
 		hls::stream<uint1_dt>  &next_frontier_done_stream14,
 		hls::stream<uint1_dt>  &next_frontier_done_stream15,
 
-		const int              root_vidx,
+		int32_dt               root_vidx,
 		const char             level
 		)
 {
@@ -149,15 +151,12 @@ static void traverse_cia(
 
 	static uint1_dt bitmap[BRAM_BANK_NUM][BITMAP_MEM_DEPTH];
     #pragma HLS array_partition variable=bitmap cyclic factor=16 dim=1
-    //#pragma HLS RESOURCE variable=bitmap core=RAM_T2P_BRAM latency=1
-    //#pragma HLS DEPENDENCE variable=bitmap inter false
-    //#pragma HLS DEPENDENCE variable=bitmap intra raw true
 
    	if(level == 0){
         traverse_init:
 		for(int i = 0; i < BRAM_BANK_NUM; i++){
-        #pragma HLS pipeline II=1
 			for (int j = 0; j < BITMAP_MEM_DEPTH; j++){
+            #pragma HLS pipeline II=1
 				bitmap[i][j] = 0;
 			}
 		}
@@ -193,132 +192,132 @@ static void traverse_cia(
 			int32_dt  ve   = word.range((14 + 1) * 32 - 1, 14 * 32);
 			int32_dt  vf   = word.range((15 + 1) * 32 - 1, 15 * 32);
 
-		    int17_dt  d0   = v0.range(20, 4);
-		    int17_dt  d1   = v1.range(20, 4);
-		    int17_dt  d2   = v2.range(20, 4);
-		    int17_dt  d3   = v3.range(20, 4);
-		    int17_dt  d4   = v4.range(20, 4);
-		    int17_dt  d5   = v5.range(20, 4);
-		    int17_dt  d6   = v6.range(20, 4);
-		    int17_dt  d7   = v7.range(20, 4);
-		    int17_dt  d8   = v8.range(20, 4);
-		    int17_dt  d9   = v9.range(20, 4);
-		    int17_dt  da   = va.range(20, 4);
-		    int17_dt  db   = vb.range(20, 4);
-		    int17_dt  dc   = vc.range(20, 4);
-		    int17_dt  dd   = vd.range(20, 4);
-		    int17_dt  de   = ve.range(20, 4);
-		    int17_dt  df   = vf.range(20, 4);
+		    uint17_dt  d0   = v0.range(20, 4);
+		    uint17_dt  d1   = v1.range(20, 4);
+		    uint17_dt  d2   = v2.range(20, 4);
+		    uint17_dt  d3   = v3.range(20, 4);
+		    uint17_dt  d4   = v4.range(20, 4);
+		    uint17_dt  d5   = v5.range(20, 4);
+		    uint17_dt  d6   = v6.range(20, 4);
+		    uint17_dt  d7   = v7.range(20, 4);
+		    uint17_dt  d8   = v8.range(20, 4);
+		    uint17_dt  d9   = v9.range(20, 4);
+		    uint17_dt  da   = va.range(20, 4);
+		    uint17_dt  db   = vb.range(20, 4);
+		    uint17_dt  dc   = vc.range(20, 4);
+		    uint17_dt  dd   = vd.range(20, 4);
+		    uint17_dt  de   = ve.range(20, 4);
+		    uint17_dt  df   = vf.range(20, 4);
 
-			if(v0 != -1){
+			if((int)v0 != -1){
 				if(bitmap[0][d0] == 0){
 					next_frontier_stream0 << v0;
-					bitmap[0][d0] == 1;
+					bitmap[0][d0] = 1;
 				}
 			}
 
-			if(v1 != -1){
+			if((int)v1 != -1){
 				if(bitmap[1][d1] == 0){
 					next_frontier_stream1 << v1;
-					bitmap[1][d1] == 1;
+					bitmap[1][d1] = 1;
 				}
 			}
 
-			if(v2 != -1){
+			if((int)v2 != -1){
 				if(bitmap[2][d2] == 0){
 					next_frontier_stream2 << v2;
-					bitmap[2][d2] == 1;
+					bitmap[2][d2] = 1;
 				}
 			}
 
-			if(v3 != -1){
+			if((int)v3 != -1){
 				if(bitmap[3][d3] == 0){
 					next_frontier_stream3 << v3;
-					bitmap[3][d3] == 1;
+					bitmap[3][d3] = 1;
 				}
 			}
 
-			if(v4 != -1){
+			if((int)v4 != -1){
 				if(bitmap[4][d4] == 0){
 					next_frontier_stream4 << v4;
-					bitmap[4][d4] == 1;
+					bitmap[4][d4] = 1;
 				}
 			}
 
-			if(v5 != -1){
+			if((int)v5 != -1){
 				if(bitmap[5][d5] == 0){
 					next_frontier_stream5 << v5;
-					bitmap[5][d5] == 1;
+					bitmap[5][d5] = 1;
 				}
 			}
 
-			if(v6 != -1){
+			if((int)v6 != -1){
 				if(bitmap[6][d6] == 0){
 					next_frontier_stream6 << v6;
-					bitmap[6][d6] == 1;
+					bitmap[6][d6] = 1;
 				}
 			}
 
-			if(v7 != -1){
+			if((int)v7 != -1){
 				if(bitmap[7][d7] == 0){
 					next_frontier_stream7 << v7;
-					bitmap[7][d7] == 1;
+					bitmap[7][d7] = 1;
 				}
 			}
 
-			if(v8 != -1){
+			if((int)v8 != -1){
 				if(bitmap[8][d8] == 0){
 					next_frontier_stream8 << v8;
-					bitmap[8][d8] == 1;
+					bitmap[8][d8] = 1;
 				}
 			}
 
-			if(v9 != -1){
+			if((int)v9 != -1){
 				if(bitmap[9][d9] == 0){
 					next_frontier_stream9 << v9;
-					bitmap[9][d9] == 1;
+					bitmap[9][d9] = 1;
 				}
 			}
 
-			if(va != -1){
+			if((int)va != -1){
 				if(bitmap[10][da] == 0){
 					next_frontier_stream10 << va;
-					bitmap[10][da] == 1;
+					bitmap[10][da] = 1;
 				}
 			}
 
-			if(vb != -1){
+			if((int)vb != -1){
 				if(bitmap[11][db] == 0){
 					next_frontier_stream11 << vb;
-					bitmap[11][db] == 1;
+					bitmap[11][db] = 1;
 				}
 			}
 
-			if(vc != -1){
+			if((int)vc != -1){
 				if(bitmap[12][dc] == 0){
 					next_frontier_stream12 << vc;
-					bitmap[12][dc] == 1;
+					bitmap[12][dc] = 1;
 				}
 			}
 
-			if(vd != -1){
+			if((int)vd != -1){
 				if(bitmap[13][dd] == 0){
 					next_frontier_stream13 << vd;
-					bitmap[13][dd] == 1;
+					bitmap[13][dd] = 1;
 				}
 			}
 
-			if(ve != -1){
+			if((int)ve != -1){
 				if(bitmap[14][de] == 0){
 					next_frontier_stream14 << ve;
-					bitmap[14][de] == 1;
+					bitmap[14][de] = 1;
 				}
 			}
 
-			if(vf != -1){
+			if((int)vf != -1){
 				if(bitmap[15][df] == 0){
 					next_frontier_stream15 << vf;
-					bitmap[15][df] == 1;
+					bitmap[15][df] = 1;
 				}
 			}
 		}
@@ -361,7 +360,6 @@ static void write_frontier(
 	uint1_dt next_frontier_empty = 0;
 
 	int buffer[BUFFER_SIZE];
-
 	int global_idx = 0;
 	int local_idx = 0;
     while(next_frontier_empty != 1 || done != 1)
@@ -398,8 +396,8 @@ static void write_frontier(
 
 extern "C" {
 void bfs(
-		const int       *frontier,
-		const int       *frontier_size
+		int             *frontier,
+		int             *frontier_size,
 		const int64_dt  *rpa, 
 		const int512_dt *cia,
 
@@ -437,9 +435,9 @@ void bfs(
 		int             *next_frontier_size14,
 		int             *next_frontier_size15,
 
-		const int       frontier_size,
 		const int       root_vidx,
-		const int       seg_size
+		const int       seg_size,
+		const int       pad,
 		const char      level
 		)
 {
@@ -482,6 +480,7 @@ void bfs(
 
 #pragma HLS INTERFACE s_axilite port=root_vidx        bundle=control
 #pragma HLS INTERFACE s_axilite port=seg_size         bundle=control
+#pragma HLS INTERFACE s_axilite port=pad              bundle=control
 #pragma HLS INTERFACE s_axilite port=level            bundle=control
 #pragma HLS INTERFACE s_axilite port=return           bundle=control
 
@@ -602,7 +601,6 @@ traverse_cia(
 		next_frontier_done_stream13,
 		next_frontier_done_stream14,
 		next_frontier_done_stream15,
-
 		root_vidx,
 		level);
 
@@ -626,7 +624,7 @@ write_frontier(next_frontier_stream5, next_frontier_done_stream5,
 			   5 * seg_size, 5);
 write_frontier(next_frontier_stream6, next_frontier_done_stream6, 
 		       next_frontier6, next_frontier_size6,
-			   6 *seg_size, 6);
+			   6 * seg_size, 6);
 write_frontier(next_frontier_stream7, next_frontier_done_stream7, 
 		       next_frontier7, next_frontier_size7,
 			   7 * seg_size, 7);

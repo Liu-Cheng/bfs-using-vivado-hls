@@ -86,7 +86,7 @@ Graph::Graph(const std::string& gName){
 }
 
 CSR::CSR(const Graph &g) 
-	: vertexNum(g.vertexNum), edgeNum(g.edgeNum)
+	: vertexNum(g.vertexNum), edgeNum(g.edgeNum), padLen(0)
 {
     rpao.resize(2 * vertexNum);
     rpai.resize(2 * vertexNum);
@@ -118,13 +118,8 @@ CSR::CSR(const Graph &g)
     }
 }
 
-int CSR::pad(const int &len)
-{
-	if(len%padLen == 0) return len;
-	else return ((len/padLen + 1) * padLen);
-}
 
-CSR::CSR(const Graph &g, const int &padLen) : 
+CSR::CSR(const Graph &g, const int &_padLen) : 
 	vertexNum(g.vertexNum), edgeNum(g.edgeNum), padLen(_padLen)
 {
 	rpao.resize(2 * vertexNum);
@@ -134,7 +129,7 @@ CSR::CSR(const Graph &g, const int &padLen) :
 		if(i == 0)
 		{
 			rpao[2 * i] = 0;
-			rpai[2 * i] = 0
+			rpai[2 * i] = 0;
 		}
 		else
 		{
@@ -143,34 +138,33 @@ CSR::CSR(const Graph &g, const int &padLen) :
 		}
 
 		// update rpao and ciao
-		int len = g.vertices[i]->outDeg;
-		int paddedLen = pad(len);
-		rpao[2 * i + 1] = paddedLen;
-
-        for(int j = 0; j < paddedLen; j++)
+		std::vector<std::vector<int>> paddingVec;
+		paddingVec.resize(padLen);
+        for(auto vidx : g.vertices[i]->outVid)
 		{
-			if(j < len){
-				ciao.push_back(g.vertices[i]->outVid[j]);
-			}
-			else{
-				ciao.push_back(-1);
+			int bankIdx = vidx % padLen;
+			paddingVec[bankIdx].push_back(vidx);
+		}
+
+		int maxSize = 0;
+		for(int j = 0; j < padLen; j++){
+			int vecSize = (int)(paddingVec[j].size()); 
+			if(vecSize > maxSize) maxSize = vecSize;
+		}
+		rpao[2 * i + 1] = maxSize * padLen;
+
+		for(int j = 0; j < maxSize; j++){
+			for(int k = 0; k < padLen; k++){
+				if((int)(paddingVec[k].size()) > j){
+					ciao.push_back(paddingVec[k][j]);
+				}
+				else{
+					ciao.push_back(-1);
+				}
 			}
 		}
 
-		// update rpai and ciai
-		len =  g.vertices[i]->inDeg;
-		paddedLen = pad(len);
-		rpai[2 * i + 1] = paddedLen;
-
-		for(int j = 0; j < paddedLen; j++)
-		{
-			if(j < len){
-				ciai.push_back(g.vertices[i]->inVid[j]);
-			}
-			else{
-				ciai.push_back(-1);
-			}
-		}
+		//ciai needs to be added later.	
 	}
 } 
 
