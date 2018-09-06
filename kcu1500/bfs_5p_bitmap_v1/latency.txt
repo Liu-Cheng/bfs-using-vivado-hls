@@ -1,0 +1,5 @@
+hardware bfs takes 3.8888 seconds.
+hardware bfs takes 40.9439 seconds.
+hardware bfs takes 17.9292 seconds.
+hardware bfs takes 9.74781 seconds.
+hardware bfs takes 38.9701 seconds.

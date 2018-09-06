@@ -1,0 +1,24 @@
+{
+    "runtime": ["OpenCL"],
+    "example": "bfs",
+    "overview": [
+        "This is an implementation of BFS with a series of strategetic optimizations."
+    ],
+    "key_concepts": [ "OpenCL API"],
+    "keywords": [ "NA" ],
+    "em_cmd": "./bfs",
+    "hw_cmd": "../../../utility/nimbix/nimbix-run.py -- ./bfs",
+    "contributors" : [
+        {
+            "group": "Xtra",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "July 2017",
+            "version": "1.0",
+            "description": "Initial Release"
+        }
+    ]
+}

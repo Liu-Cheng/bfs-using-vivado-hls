@@ -1,0 +1,49 @@
+./host 
+vertex num: 1157828
+edge num: 2987624
+Graph is loaded.
+rpaoSize: 2315656
+ciaoSize: 15878096
+soft bfs starts.
+software bfs: level = 0
+software bfs: frontier 1
+software bfs: level = 1
+software bfs: frontier 1
+software bfs: level = 2
+software bfs: frontier 264
+software bfs: level = 3
+software bfs: frontier 9516
+software bfs: level = 4
+software bfs: frontier 240956
+software bfs: level = 5
+software bfs: frontier 568782
+software bfs: level = 6
+software bfs: frontier 232228
+software bfs: level = 7
+software bfs: frontier 62280
+software bfs: level = 8
+software bfs: frontier 15533
+software bfs: level = 9
+software bfs: frontier 3945
+software bfs: level = 10
+software bfs: frontier 1061
+software bfs: level = 11
+software bfs: frontier 230
+software bfs: level = 12
+software bfs: frontier 61
+software bfs: level = 13
+software bfs: frontier 20
+software bfs: level = 14
+software bfs: frontier 11
+software bfs: level = 15
+software bfs: frontier 1
+software bfs: level = 16
+Software bfs takes 0.223141 seconds.
+INFO: Importing xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: Loaded file
+INFO: Created Binary
+INFO: Built Program
+hwBfs: level = 0 frontier size: 1
+hwBfs: level = 1 frontier size: 1
+hwBfs: level = 2 frontier size: 264
+hwBfs: level = 3 frontier size: 9516

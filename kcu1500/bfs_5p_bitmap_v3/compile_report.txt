@@ -2767,3 +2767,2181 @@ Finished 5th of 5 tasks (FPGA bitstream generation). Elapsed time: 00h 45m 09s.
 WARNING: [XOCC 60-732] Link warning: One or more timing paths failed timing targeting 300 MHz for kernel clock 'DATA_CLK'. The frequency is being automatically changed to 200 MHz to enable proper functionality
 INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
 INFO: [XOCC 60-791] Total elapsed time: 3h 47m 39s
+Sat Sep 1 15:40:07 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+../../..//utility/rules.mk:124: recipe for target 'host' failed
+Sat Sep 1 15:41:15 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+../../..//utility/rules.mk:124: recipe for target 'host' failed
+Sat Sep 1 15:41:33 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+../../..//utility/rules.mk:124: recipe for target 'host' failed
+Sat Sep 1 15:41:58 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+../../..//utility/rules.mk:124: recipe for target 'host' failed
+Sat Sep 1 15:42:11 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+ERROR: [XOCC 200-70] Compilation errors found:
+Pragma processor failed: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/src/bfs.cpp:1142:1: error: use of undeclared identifier 'read_csr'; did you mean 'read_cia'?
+read_csr(cia, rpa_stream, cia_stream, cia_done_stream, frontier_size);
+^~~~~~~~
+read_cia
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/src/bfs.cpp:41:13: note: 'read_cia' declared here
+static void read_cia(
+            ^
+1 error generated.
+ERROR: [XOCC 60-300] Failed to build kernel(ip) bfs, see log for details: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log
+ERROR: [XOCC 60-599] Kernel compilation failed to complete
+ERROR: [XOCC 60-592] Failed to finish compilation
+../../..//utility/rules.mk:126: recipe for target 'xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo' failed
+Sat Sep 1 15:42:54 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 30s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 6s
+Sat Sep 1 15:54:21 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 54s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 8s
+Sat Sep 1 16:09:50 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Sat Sep 1 16:17:12 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 43s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 6s
+Sat Sep 1 16:20:38 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Sat Sep 1 16:21:56 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Sat Sep 1 16:23:31 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 30s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 5s
+Sat Sep 1 16:30:58 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 48s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 6s
+Sat Sep 1 16:40:39 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Sat Sep 1 16:55:09 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 43s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 7s
+Sat Sep 1 17:00:24 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+../../..//utility/rules.mk:124: recipe for target 'host' failed
+Sat Sep 1 17:00:41 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Sat Sep 1 17:02:34 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+../../..//utility/rules.mk:124: recipe for target 'host' failed
+Sat Sep 1 17:02:46 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Sat Sep 1 17:09:50 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+../../..//utility/rules.mk:124: recipe for target 'host' failed
+Sat Sep 1 17:10:01 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Sat Sep 1 17:12:41 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Sat Sep 1 17:19:25 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Sat Sep 1 17:20:31 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Sat Sep 1 19:49:42 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 36s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 6s
+Sat Sep 1 19:56:50 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Sat Sep 1 20:46:46 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 24s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 5s
+Sat Sep 1 20:55:56 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 23s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 5s
+Sat Sep 1 21:45:57 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 33s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 6s
+Sat Sep 1 21:48:58 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Sat Sep 1 21:54:32 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 30s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 5s
+Sun Sep 2 16:04:22 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Sun Sep 2 16:07:57 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+ERROR: [XOCC 200-70] Compilation errors found:
+Pragma processor failed: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/src/bfs.cpp:58:36: error: cannot pass object of non-POD type 'int32_dt' (aka 'ap_int<32>') through variadic function; call will abort at runtime [-Wnon-pod-varargs]
+                printf("start = %d, num = %d\n", start, num);
+                                                 ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/src/bfs.cpp:58:43: error: cannot pass object of non-POD type 'int32_dt' (aka 'ap_int<32>') through variadic function; call will abort at runtime [-Wnon-pod-varargs]
+                printf("start = %d, num = %d\n", start, num);
+                                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/src/bfs.cpp:58:20: warning: format specifies type 'int' but the argument has type 'int32_dt' (aka 'ap_int<32>') [-Wformat]
+                printf("start = %d, num = %d\n", start, num);
+                                ~^               ~~~~~
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/src/bfs.cpp:58:30: warning: format specifies type 'int' but the argument has type 'int32_dt' (aka 'ap_int<32>') [-Wformat]
+                printf("start = %d, num = %d\n", start, num);
+                                          ~^            ~~~
+2 warnings and 2 errors generated.
+ERROR: [XOCC 60-300] Failed to build kernel(ip) bfs, see log for details: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log
+ERROR: [XOCC 60-599] Kernel compilation failed to complete
+ERROR: [XOCC 60-592] Failed to finish compilation
+../../..//utility/rules.mk:126: recipe for target 'xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo' failed
+Sun Sep 2 16:08:40 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 35s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 6s
+Sun Sep 2 16:11:10 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Sun Sep 2 16:15:10 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Sun Sep 2 16:19:33 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 27s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 5s
+Sun Sep 2 16:23:26 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 27s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 5s
+Sun Sep 2 16:26:39 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xo -t hw --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for hardware target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 204-61] Pipelining loop 'read_rpa'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 3.
+INFO: [XOCC 204-61] Pipelining loop 'read_cia.1'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 3.
+INFO: [XOCC 204-61] Pipelining loop 'traverse_init'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 1.
+INFO: [XOCC 204-61] Pipelining loop 'traverse_main'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 2, Depth: 5.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 2'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 3'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 4'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 5'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 6'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 7'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 8'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 9'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 10'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 11'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 12'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 13'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 14'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 15'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 16'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 17'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.2'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.4'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.5'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.6'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.7'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.8'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.9'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.10'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.11'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.12'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.13'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.14'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.15'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.16'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 60-594] Finished kernel compilation
+Add Instance write_frontier write_frontier_U0 2374
+Add Instance traverse_cia traverse_cia_U0 2467
+Add Instance read_cia read_cia_U0 2571
+Add Instance Block_proc Block_proc_U0 2582
+Add Instance read_rpa read_rpa_U0 2601
+Add Instance bfs_entry41372 bfs_entry41372_U0 2611
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 2m 3s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t hw --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for hardware target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-251]   Hardware accelerator integration...
+Creating Vivado project and starting FPGA synthesis.
+.....................................Sun Sep 2 19:36:32 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xo -t hw --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for hardware target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 204-61] Pipelining loop 'read_rpa'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 3.
+INFO: [XOCC 204-61] Pipelining loop 'read_cia.1'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 3.
+INFO: [XOCC 204-61] Pipelining loop 'traverse_init'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 1.
+INFO: [XOCC 204-61] Pipelining loop 'traverse_main'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 2, Depth: 5.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 2'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 3'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 4'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 5'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 6'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 7'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 8'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 9'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 10'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 11'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 12'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 13'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 14'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 15'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 16'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 17'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.2'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.4'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.5'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.6'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.7'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.8'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.9'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.10'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.11'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.12'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.13'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.14'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.15'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 1.16'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 9.
+INFO: [XOCC 60-594] Finished kernel compilation
+Add Instance write_frontier write_frontier_U0 2374
+Add Instance traverse_cia traverse_cia_U0 2467
+Add Instance read_cia read_cia_U0 2571
+Add Instance Block_proc Block_proc_U0 2582
+Add Instance read_rpa read_rpa_U0 2601
+Add Instance bfs_entry41372 bfs_entry41372_U0 2611
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 2m 30s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t hw --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for hardware target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-251]   Hardware accelerator integration...
+Creating Vivado project and starting FPGA synthesis.
+.............................................................................................................................................................................................................................................................................................................................................................................................
+Finished 1st of 5 tasks (FPGA synthesis). Elapsed time: 01h 25m 36s.
+.....................
+Finished 2nd of 5 tasks (FPGA logic optimization). Elapsed time: 00h 18m 52s.
+...........................
+Finished 3rd of 5 tasks (FPGA logic placement). Elapsed time: 00h 45m 29s.
+............................
+Finished 4th of 5 tasks (FPGA routing). Elapsed time: 01h 06m 36s.
+...
+Finished 5th of 5 tasks (FPGA bitstream generation). Elapsed time: 00h 51m 26s.
+
+WARNING: [XOCC 60-732] Link warning: One or more timing paths failed timing targeting 300 MHz for kernel clock 'DATA_CLK'. The frequency is being automatically changed to 180 MHz to enable proper functionality
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 4h 36m 58s
+Mon Sep 3 07:40:57 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Mon Sep 3 07:45:50 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v1/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 37s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 6s
+Mon Sep 3 07:47:38 CST 2018
+
+
+make: Nothing to be done for 'all'.
+Mon Sep 3 08:24:05 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+ERROR: [XOCC 200-70] Compilation errors found:
+Pragma processor failed: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:286:42: error: use of undeclared identifier 'v10'
+                                        *(next_frontier10 + mem_addr10++) = v10;
+                                                                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:293:42: error: use of undeclared identifier 'v11'; did you mean 'v1'?
+                                        *(next_frontier11 + mem_addr11++) = v11;
+                                                                            ^~~
+                                                                            v1
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:181:14: note: 'v1' declared here
+                        int32_dt  v1   = word.range((1  + 1) * 32 - 1, 1  * 32);
+                                  ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:387:3: error: expected parameter declarator
+                )
+                ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:550:6: error: use of undeclared identifier 'next_frontier0'
+                                        next_frontier0[global_idx0++] = buffer0[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:567:6: error: use of undeclared identifier 'next_frontier1'
+                                        next_frontier1[global_idx1++] = buffer1[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:584:6: error: use of undeclared identifier 'next_frontier2'
+                                        next_frontier2[global_idx2++] = buffer2[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:601:6: error: use of undeclared identifier 'next_frontier3'
+                                        next_frontier3[global_idx3++] = buffer3[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:618:6: error: use of undeclared identifier 'next_frontier4'
+                                        next_frontier4[global_idx4++] = buffer4[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:635:6: error: use of undeclared identifier 'next_frontier5'
+                                        next_frontier5[global_idx5++] = buffer5[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:652:6: error: use of undeclared identifier 'next_frontier6'
+                                        next_frontier6[global_idx6++] = buffer6[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:669:6: error: use of undeclared identifier 'next_frontier7'
+                                        next_frontier7[global_idx7++] = buffer7[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:686:6: error: use of undeclared identifier 'next_frontier8'
+                                        next_frontier8[global_idx8++] = buffer8[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:703:6: error: use of undeclared identifier 'next_frontier9'
+                                        next_frontier9[global_idx9++] = buffer9[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:720:6: error: use of undeclared identifier 'next_frontier10'
+                                        next_frontier10[global_idx10++] = buffer10[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:737:6: error: use of undeclared identifier 'next_frontier11'
+                                        next_frontier11[global_idx11++] = buffer11[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:754:6: error: use of undeclared identifier 'next_frontier12'
+                                        next_frontier12[global_idx12++] = buffer12[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:771:6: error: use of undeclared identifier 'next_frontier13'
+                                        next_frontier13[global_idx13++] = buffer13[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:788:6: error: use of undeclared identifier 'next_frontier14'
+                                        next_frontier14[global_idx14++] = buffer14[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:805:6: error: use of undeclared identifier 'next_frontier15'
+                                        next_frontier15[global_idx15++] = buffer15[i];
+                                        ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+ERROR: [XOCC 60-300] Failed to build kernel(ip) bfs, see log for details: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log
+ERROR: [XOCC 60-599] Kernel compilation failed to complete
+ERROR: [XOCC 60-592] Failed to finish compilation
+../../..//utility/rules.mk:126: recipe for target 'xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo' failed
+Mon Sep 3 08:27:11 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+ERROR: [XOCC 200-70] Compilation errors found:
+Pragma processor failed: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:387:3: error: expected parameter declarator
+                )
+                ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:550:6: error: use of undeclared identifier 'next_frontier0'
+                                        next_frontier0[global_idx0++] = buffer0[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:567:6: error: use of undeclared identifier 'next_frontier1'
+                                        next_frontier1[global_idx1++] = buffer1[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:584:6: error: use of undeclared identifier 'next_frontier2'
+                                        next_frontier2[global_idx2++] = buffer2[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:601:6: error: use of undeclared identifier 'next_frontier3'
+                                        next_frontier3[global_idx3++] = buffer3[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:618:6: error: use of undeclared identifier 'next_frontier4'
+                                        next_frontier4[global_idx4++] = buffer4[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:635:6: error: use of undeclared identifier 'next_frontier5'
+                                        next_frontier5[global_idx5++] = buffer5[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:652:6: error: use of undeclared identifier 'next_frontier6'
+                                        next_frontier6[global_idx6++] = buffer6[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:669:6: error: use of undeclared identifier 'next_frontier7'
+                                        next_frontier7[global_idx7++] = buffer7[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:686:6: error: use of undeclared identifier 'next_frontier8'
+                                        next_frontier8[global_idx8++] = buffer8[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:703:6: error: use of undeclared identifier 'next_frontier9'
+                                        next_frontier9[global_idx9++] = buffer9[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:720:6: error: use of undeclared identifier 'next_frontier10'
+                                        next_frontier10[global_idx10++] = buffer10[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:737:6: error: use of undeclared identifier 'next_frontier11'
+                                        next_frontier11[global_idx11++] = buffer11[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:754:6: error: use of undeclared identifier 'next_frontier12'
+                                        next_frontier12[global_idx12++] = buffer12[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:771:6: error: use of undeclared identifier 'next_frontier13'
+                                        next_frontier13[global_idx13++] = buffer13[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:788:6: error: use of undeclared identifier 'next_frontier14'
+                                        next_frontier14[global_idx14++] = buffer14[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:805:6: error: use of undeclared identifier 'next_frontier15'
+                                        next_frontier15[global_idx15++] = buffer15[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:818:4: error: use of undeclared identifier 'next_frontier0'
+                        next_frontier0[global_idx0++] = buffer0[i];
+                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:825:4: error: use of undeclared identifier 'next_frontier1'
+                        next_frontier1[global_idx1++] = buffer1[i];
+                        ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+ERROR: [XOCC 60-300] Failed to build kernel(ip) bfs, see log for details: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log
+ERROR: [XOCC 60-599] Kernel compilation failed to complete
+ERROR: [XOCC 60-592] Failed to finish compilation
+../../..//utility/rules.mk:126: recipe for target 'xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo' failed
+Mon Sep 3 08:29:20 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+ERROR: [XOCC 200-70] Compilation errors found:
+Pragma processor failed: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:387:3: error: expected parameter declarator
+                )
+                ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:550:6: error: use of undeclared identifier 'next_frontier0'
+                                        next_frontier0[global_idx0++] = buffer0[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:567:6: error: use of undeclared identifier 'next_frontier1'
+                                        next_frontier1[global_idx1++] = buffer1[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:584:6: error: use of undeclared identifier 'next_frontier2'
+                                        next_frontier2[global_idx2++] = buffer2[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:601:6: error: use of undeclared identifier 'next_frontier3'
+                                        next_frontier3[global_idx3++] = buffer3[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:618:6: error: use of undeclared identifier 'next_frontier4'
+                                        next_frontier4[global_idx4++] = buffer4[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:635:6: error: use of undeclared identifier 'next_frontier5'
+                                        next_frontier5[global_idx5++] = buffer5[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:652:6: error: use of undeclared identifier 'next_frontier6'
+                                        next_frontier6[global_idx6++] = buffer6[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:669:6: error: use of undeclared identifier 'next_frontier7'
+                                        next_frontier7[global_idx7++] = buffer7[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:686:6: error: use of undeclared identifier 'next_frontier8'
+                                        next_frontier8[global_idx8++] = buffer8[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:703:6: error: use of undeclared identifier 'next_frontier9'
+                                        next_frontier9[global_idx9++] = buffer9[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:720:6: error: use of undeclared identifier 'next_frontier10'
+                                        next_frontier10[global_idx10++] = buffer10[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:737:6: error: use of undeclared identifier 'next_frontier11'
+                                        next_frontier11[global_idx11++] = buffer11[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:754:6: error: use of undeclared identifier 'next_frontier12'
+                                        next_frontier12[global_idx12++] = buffer12[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:771:6: error: use of undeclared identifier 'next_frontier13'
+                                        next_frontier13[global_idx13++] = buffer13[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:788:6: error: use of undeclared identifier 'next_frontier14'
+                                        next_frontier14[global_idx14++] = buffer14[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:805:6: error: use of undeclared identifier 'next_frontier15'
+                                        next_frontier15[global_idx15++] = buffer15[i];
+                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:818:4: error: use of undeclared identifier 'next_frontier0'
+                        next_frontier0[global_idx0++] = buffer0[i];
+                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/src/bfs.cpp:825:4: error: use of undeclared identifier 'next_frontier1'
+                        next_frontier1[global_idx1++] = buffer1[i];
+                        ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+ERROR: [XOCC 60-300] Failed to build kernel(ip) bfs, see log for details: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log
+ERROR: [XOCC 60-599] Kernel compilation failed to complete
+ERROR: [XOCC 60-592] Failed to finish compilation
+../../..//utility/rules.mk:126: recipe for target 'xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo' failed
+Mon Sep 3 08:31:03 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 23s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 5s
+Mon Sep 3 08:34:04 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Mon Sep 3 08:34:52 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xo -t hw --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for hardware target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v2/_xocc_compile_bfs_bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 204-61] Pipelining loop 'read_rpa'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 3.
+INFO: [XOCC 204-61] Pipelining loop 'read_cia.1'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 3.
+INFO: [XOCC 204-61] Pipelining loop 'traverse_init'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 1.
+INFO: [XOCC 204-61] Pipelining loop 'traverse_main'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 7, Depth: 18.
+INFO: [XOCC 60-594] Finished kernel compilation
+Add Instance traverse_cia traverse_cia_U0 1252
+Add Instance read_cia read_cia_U0 1366
+Add Instance Block_proc Block_proc_U0 1377
+Add Instance read_rpa read_rpa_U0 1396
+Add Instance bfs_entry16042 bfs_entry16042_U0 1406
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 1m 33s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t hw --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for hardware target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-251]   Hardware accelerator integration...
+Creating Vivado project and starting FPGA synthesis.
+...........................................................................................................................................................................................................................................................................................................................................................................................................................................................
+Finished 1st of 5 tasks (FPGA synthesis). Elapsed time: 00h 48m 24s.
+.....................
+Finished 2nd of 5 tasks (FPGA logic optimization). Elapsed time: 00h 16m 11s.
+...........................
+Finished 3rd of 5 tasks (FPGA logic placement). Elapsed time: 00h 35m 35s.
+..........................
+Finished 4th of 5 tasks (FPGA routing). Elapsed time: 00h 47m 53s.
+...
+Finished 5th of 5 tasks (FPGA bitstream generation). Elapsed time: 00h 41m 16s.
+
+WARNING: [XOCC 60-732] Link warning: One or more timing paths failed timing targeting 300 MHz for kernel clock 'DATA_CLK'. The frequency is being automatically changed to 220 MHz to enable proper functionality
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 3h 16m 35s
+Mon Sep 3 16:57:52 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+../../..//utility/rules.mk:124: recipe for target 'host' failed
+Mon Sep 3 16:58:48 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+../../..//utility/rules.mk:124: recipe for target 'host' failed
+Mon Sep 3 16:59:45 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 32s
+Mon Sep 3 18:27:53 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+ERROR: [XOCC 200-70] Compilation errors found:
+Pragma processor failed: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:112:3: error: use of undeclared identifier 'uint17_dt'
+                uint17_dt offset   = root_vidx.range(20, 3);
+                ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:113:29: error: use of undeclared identifier 'offset'
+                if(bank_idx == 0) bitmap0[offset] = 1;
+                                          ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:114:29: error: use of undeclared identifier 'offset'
+                if(bank_idx == 1) bitmap1[offset] = 1;
+                                          ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:115:29: error: use of undeclared identifier 'offset'
+                if(bank_idx == 2) bitmap2[offset] = 1;
+                                          ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:116:29: error: use of undeclared identifier 'offset'
+                if(bank_idx == 3) bitmap3[offset] = 1;
+                                          ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:117:29: error: use of undeclared identifier 'offset'
+                if(bank_idx == 4) bitmap4[offset] = 1;
+                                          ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:118:29: error: use of undeclared identifier 'offset'
+                if(bank_idx == 5) bitmap5[offset] = 1;
+                                          ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:119:29: error: use of undeclared identifier 'offset'
+                if(bank_idx == 6) bitmap6[offset] = 1;
+                                          ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:120:29: error: use of undeclared identifier 'offset'
+                if(bank_idx == 7) bitmap7[offset] = 1;
+                                          ^
+9 errors generated.
+ERROR: [XOCC 60-300] Failed to build kernel(ip) bfs, see log for details: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log
+ERROR: [XOCC 60-599] Kernel compilation failed to complete
+ERROR: [XOCC 60-592] Failed to finish compilation
+../../..//utility/rules.mk:126: recipe for target 'xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo' failed
+Mon Sep 3 18:29:33 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 23s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 6s
+Mon Sep 3 21:53:13 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+ERROR: [XOCC 200-70] Compilation errors found:
+Pragma processor failed: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:224:26: error: use of undeclared identifier 'mem_addr8'
+                        mem_addr6, mem_addr7, mem_addr8);
+                                              ^
+1 error generated.
+ERROR: [XOCC 60-300] Failed to build kernel(ip) bfs, see log for details: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log
+ERROR: [XOCC 60-599] Kernel compilation failed to complete
+ERROR: [XOCC 60-592] Failed to finish compilation
+../../..//utility/rules.mk:126: recipe for target 'xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo' failed
+Mon Sep 3 21:54:07 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 23s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 7s
+Mon Sep 3 21:56:04 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+ERROR: [XOCC 200-70] Compilation errors found:
+Pragma processor failed: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:55:36: error: cannot pass object of non-POD type 'int32_dt' (aka 'ap_int<32>') through variadic function; call will abort at runtime [-Wnon-pod-varargs]
+                printf("cia start %d, num %d\n", start, num);
+                                                 ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:55:43: error: cannot pass object of non-POD type 'int32_dt' (aka 'ap_int<32>') through variadic function; call will abort at runtime [-Wnon-pod-varargs]
+                printf("cia start %d, num %d\n", start, num);
+                                                        ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:55:22: warning: format specifies type 'int' but the argument has type 'int32_dt' (aka 'ap_int<32>') [-Wformat]
+                printf("cia start %d, num %d\n", start, num);
+                                  ~^             ~~~~~
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:55:30: warning: format specifies type 'int' but the argument has type 'int32_dt' (aka 'ap_int<32>') [-Wformat]
+                printf("cia start %d, num %d\n", start, num);
+                                          ~^            ~~~
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:225:4: warning: data argument not used by format string [-Wformat-extra-args]
+                        mem_addr6, mem_addr7);
+                        ^
+3 warnings and 2 errors generated.
+ERROR: [XOCC 60-300] Failed to build kernel(ip) bfs, see log for details: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log
+ERROR: [XOCC 60-599] Kernel compilation failed to complete
+ERROR: [XOCC 60-592] Failed to finish compilation
+../../..//utility/rules.mk:126: recipe for target 'xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo' failed
+Mon Sep 3 21:56:27 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 20s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 5s
+Tue Sep 4 08:36:56 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+../../..//utility/rules.mk:124: recipe for target 'host' failed
+Tue Sep 4 08:37:16 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Tue Sep 4 08:45:43 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 30s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 6s
+Tue Sep 4 08:50:19 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 20s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 5s
+Tue Sep 4 09:00:01 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 20s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 5s
+Tue Sep 4 09:01:41 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 20s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 5s
+Tue Sep 4 09:04:08 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xo -t hw --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for hardware target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 204-61] Pipelining loop 'read_rpa'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 3.
+INFO: [XOCC 204-61] Pipelining loop 'read_cia.1'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 3.
+INFO: [XOCC 204-61] Pipelining loop 'traverse_init'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 1.
+INFO: [XOCC 204-61] Pipelining loop 'traverse_main'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 2, Depth: 11.
+INFO: [XOCC 60-594] Finished kernel compilation
+Add Instance traverse_cia traverse_cia_U0 608
+Add Instance read_cia read_cia_U0 675
+Add Instance read_rpa11026 read_rpa11026_U0 686
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 1m 36s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t hw --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for hardware target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-251]   Hardware accelerator integration...
+Creating Vivado project and starting FPGA synthesis.
+...................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+Finished 1st of 5 tasks (FPGA synthesis). Elapsed time: 00h 54m 29s.
+.....................
+Finished 2nd of 5 tasks (FPGA logic optimization). Elapsed time: 00h 16m 35s.
+...........................
+Finished 3rd of 5 tasks (FPGA logic placement). Elapsed time: 00h 33m 20s.
+..........................
+Finished 4th of 5 tasks (FPGA routing). Elapsed time: 00h 51m 09s.
+...
+Finished 5th of 5 tasks (FPGA bitstream generation). Elapsed time: 00h 39m 31s.
+
+WARNING: [XOCC 60-732] Link warning: One or more timing paths failed timing targeting 300 MHz for kernel clock 'DATA_CLK'. The frequency is being automatically changed to 240 MHz to enable proper functionality
+WARNING: [XOCC 60-732] Link warning: One or more timing paths failed timing targeting 500 MHz for kernel clock 'KERNEL_CLK2'. The frequency is being automatically changed to 240 MHz to enable proper functionality
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 3h 22m 35s
+Tue Sep 4 13:00:06 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+ERROR: [XOCC 200-70] Compilation errors found:
+Pragma processor failed: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:71:15: error: use of undeclared identifier 'graph_dt'
+                hls::stream<graph_dt>  &next_frontier_stream0,
+                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:72:15: error: use of undeclared identifier 'graph_dt'
+                hls::stream<graph_dt>  &next_frontier_stream1,
+                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:73:15: error: use of undeclared identifier 'graph_dt'
+                hls::stream<graph_dt>  &next_frontier_stream2,
+                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:74:15: error: use of undeclared identifier 'graph_dt'
+                hls::stream<graph_dt>  &next_frontier_stream3,
+                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:75:15: error: use of undeclared identifier 'graph_dt'
+                hls::stream<graph_dt>  &next_frontier_stream4,
+                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:76:15: error: use of undeclared identifier 'graph_dt'
+                hls::stream<graph_dt>  &next_frontier_stream5,
+                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:77:15: error: use of undeclared identifier 'graph_dt'
+                hls::stream<graph_dt>  &next_frontier_stream6,
+                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:78:15: error: use of undeclared identifier 'graph_dt'
+                hls::stream<graph_dt>  &next_frontier_stream7,
+                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:260:15: error: use of undeclared identifier 'graph_dt'
+                hls::stream<graph_dt>   &next_frontier_stream,
+                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:260:15: error: use of undeclared identifier 'graph_dt'
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:287:20: error: use of undeclared identifier 'global_idx'; did you mean 'local_idx'?
+                                        next_frontier[global_idx++] = buffer[i];
+                                                      ^~~~~~~~~~
+                                                      local_idx
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:271:6: note: 'local_idx' declared here
+        int local_idx = 0;
+            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:301:18: error: use of undeclared identifier 'global_idx'; did you mean 'local_idx'?
+                        next_frontier[global_idx++] = buffer[i];
+                                      ^~~~~~~~~~
+                                      local_idx
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:271:6: note: 'local_idx' declared here
+        int local_idx = 0;
+            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:348:13: error: use of undeclared identifier 'graph_dt'
+hls::stream<graph_dt>  next_frontier_stream0;
+            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:348:24: error: C++ requires a type specifier for all declarations
+hls::stream<graph_dt>  next_frontier_stream0;
+                       ^~~~~~~~~~~~~~~~~~~~~
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:349:13: error: use of undeclared identifier 'graph_dt'
+hls::stream<graph_dt>  next_frontier_stream1;
+            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:349:24: error: C++ requires a type specifier for all declarations
+hls::stream<graph_dt>  next_frontier_stream1;
+                       ^~~~~~~~~~~~~~~~~~~~~
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:350:13: error: use of undeclared identifier 'graph_dt'
+hls::stream<graph_dt>  next_frontier_stream2;
+            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:350:24: error: C++ requires a type specifier for all declarations
+hls::stream<graph_dt>  next_frontier_stream2;
+                       ^~~~~~~~~~~~~~~~~~~~~
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:351:13: error: use of undeclared identifier 'graph_dt'
+hls::stream<graph_dt>  next_frontier_stream3;
+            ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+ERROR: [XOCC 60-300] Failed to build kernel(ip) bfs, see log for details: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log
+ERROR: [XOCC 60-599] Kernel compilation failed to complete
+ERROR: [XOCC 60-592] Failed to finish compilation
+../../..//utility/rules.mk:126: recipe for target 'xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo' failed
+Tue Sep 4 13:02:01 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+ERROR: [XOCC 200-70] Compilation errors found:
+Pragma processor failed: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:71:15: error: use of undeclared identifier 'graph_dt'
+                hls::stream<graph_dt>  &next_frontier_stream0,
+                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:72:15: error: use of undeclared identifier 'graph_dt'
+                hls::stream<graph_dt>  &next_frontier_stream1,
+                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:73:15: error: use of undeclared identifier 'graph_dt'
+                hls::stream<graph_dt>  &next_frontier_stream2,
+                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:74:15: error: use of undeclared identifier 'graph_dt'
+                hls::stream<graph_dt>  &next_frontier_stream3,
+                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:75:15: error: use of undeclared identifier 'graph_dt'
+                hls::stream<graph_dt>  &next_frontier_stream4,
+                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:76:15: error: use of undeclared identifier 'graph_dt'
+                hls::stream<graph_dt>  &next_frontier_stream5,
+                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:77:15: error: use of undeclared identifier 'graph_dt'
+                hls::stream<graph_dt>  &next_frontier_stream6,
+                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:78:15: error: use of undeclared identifier 'graph_dt'
+                hls::stream<graph_dt>  &next_frontier_stream7,
+                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:260:15: error: use of undeclared identifier 'graph_dt'
+                hls::stream<graph_dt>   &next_frontier_stream,
+                            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:260:15: error: use of undeclared identifier 'graph_dt'
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:348:13: error: use of undeclared identifier 'graph_dt'
+hls::stream<graph_dt>  next_frontier_stream0;
+            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:348:24: error: C++ requires a type specifier for all declarations
+hls::stream<graph_dt>  next_frontier_stream0;
+                       ^~~~~~~~~~~~~~~~~~~~~
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:349:13: error: use of undeclared identifier 'graph_dt'
+hls::stream<graph_dt>  next_frontier_stream1;
+            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:349:24: error: C++ requires a type specifier for all declarations
+hls::stream<graph_dt>  next_frontier_stream1;
+                       ^~~~~~~~~~~~~~~~~~~~~
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:350:13: error: use of undeclared identifier 'graph_dt'
+hls::stream<graph_dt>  next_frontier_stream2;
+            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:350:24: error: C++ requires a type specifier for all declarations
+hls::stream<graph_dt>  next_frontier_stream2;
+                       ^~~~~~~~~~~~~~~~~~~~~
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:351:13: error: use of undeclared identifier 'graph_dt'
+hls::stream<graph_dt>  next_frontier_stream3;
+            ^
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:351:24: error: C++ requires a type specifier for all declarations
+hls::stream<graph_dt>  next_frontier_stream3;
+                       ^~~~~~~~~~~~~~~~~~~~~
+/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/src/bfs.cpp:352:13: error: use of undeclared identifier 'graph_dt'
+hls::stream<graph_dt>  next_frontier_stream4;
+            ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+ERROR: [XOCC 60-300] Failed to build kernel(ip) bfs, see log for details: /home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log
+ERROR: [XOCC 60-599] Kernel compilation failed to complete
+ERROR: [XOCC 60-592] Failed to finish compilation
+../../..//utility/rules.mk:126: recipe for target 'xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo' failed
+Tue Sep 4 13:03:15 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 23s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 6s
+Tue Sep 4 14:34:28 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Tue Sep 4 14:36:32 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+Tue Sep 4 14:40:46 CST 2018
+
+
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 60-594] Finished kernel compilation
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 23s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t sw_emu --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for software emulation target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-645] kernel flags are ''
+INFO: [XOCC 60-586] Created xclbin/bfs.sw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 0h 0m 5s
+Tue Sep 4 14:42:25 CST 2018
+
+
+/opt/Xilinx/SDx/2017.1/bin/xcpp -Wall -O0 -g -std=c++14 -I./src/ -I../../..//libs/xcl -I/opt/Xilinx/SDx/2017.1/runtime/include/1_2 -std=c++0x  ./src/host.cpp ./src/graph.cpp  ../../..//libs/xcl/xcl.c -o host -L/opt/Xilinx/SDx/2017.1/runtime/lib/x86_64 -L/opt/Xilinx/SDx/2017.1/lib/lnx64.o -lOpenCL -pthread 
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -c --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s -k bfs   -o xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xo -t hw --platform xilinx:kcu1500:4ddr-xpr:4.0 ./src/bfs.cpp
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-585] Compiling for hardware target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-242] Creating kernel: 'bfs'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: bfs Log file:/home/liucheng/SDAccel_Examples/bfs-using-vivado-hls/kcu1500/bfs_5p_bitmap_v3/_xocc_compile_bfs_bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.dir/impl/kernels/bfs/vivado_hls.log :
+INFO: [XOCC 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [XOCC 204-61] Pipelining loop 'read_rpa'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 3.
+INFO: [XOCC 204-61] Pipelining loop 'read_cia.1'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 3.
+INFO: [XOCC 204-61] Pipelining loop 'traverse_init'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 1.
+INFO: [XOCC 204-61] Pipelining loop 'traverse_main'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 2, Depth: 5.
+INFO: [XOCC 204-61] Pipelining loop 'write_frontier_kernel'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 2'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'write_frontier_kernel'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 2'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'write_frontier_kernel'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 2'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'write_frontier_kernel'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 2'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'write_frontier_kernel'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 2'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'write_frontier_kernel'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 2'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'write_frontier_kernel'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 2'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'write_frontier_kernel'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 204-61] Pipelining loop 'Loop 2'.
+INFO: [XOCC 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 8.
+INFO: [XOCC 60-594] Finished kernel compilation
+Add Instance traverse_cia traverse_cia_U0 944
+Add Instance write_frontier96 write_frontier96_U0 1003
+Add Instance write_frontier97 write_frontier97_U0 1012
+Add Instance write_frontier98 write_frontier98_U0 1021
+Add Instance write_frontier99 write_frontier99_U0 1030
+Add Instance write_frontier100 write_frontier100_U0 1039
+Add Instance write_frontier101 write_frontier101_U0 1048
+Add Instance write_frontier102 write_frontier102_U0 1057
+Add Instance write_frontier write_frontier_U0 1066
+Add Instance read_cia read_cia_U0 1075
+Add Instance read_rpa24341 read_rpa24341_U0 1086
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xo
+INFO: [XOCC 60-791] Total elapsed time: 0h 1m 48s
+mkdir -p xclbin
+/opt/Xilinx/SDx/2017.1/bin/xocc -l --xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s   -o xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xclbin -t hw --platform xilinx:kcu1500:4ddr-xpr:4.0 xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xo
+
+****** xocc v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [XOCC 60-629] Linking for hardware target
+INFO: [XOCC 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx:kcu1500:4ddr-xpr:4.0
+INFO: [XOCC 60-251]   Hardware accelerator integration...
+Creating Vivado project and starting FPGA synthesis.
+......................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+Finished 1st of 5 tasks (FPGA synthesis). Elapsed time: 01h 09m 00s.
+.....................
+Finished 2nd of 5 tasks (FPGA logic optimization). Elapsed time: 00h 19m 37s.
+...........................
+Finished 3rd of 5 tasks (FPGA logic placement). Elapsed time: 00h 41m 55s.
+..........................
+Finished 4th of 5 tasks (FPGA routing). Elapsed time: 01h 00m 04s.
+...
+Finished 5th of 5 tasks (FPGA bitstream generation). Elapsed time: 00h 47m 42s.
+
+WARNING: [XOCC 60-732] Link warning: One or more timing paths failed timing targeting 300 MHz for kernel clock 'DATA_CLK'. The frequency is being automatically changed to 240 MHz to enable proper functionality
+WARNING: [XOCC 60-732] Link warning: One or more timing paths failed timing targeting 500 MHz for kernel clock 'KERNEL_CLK2'. The frequency is being automatically changed to 240 MHz to enable proper functionality
+INFO: [XOCC 60-586] Created xclbin/bfs.hw.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 4h 8m 5s

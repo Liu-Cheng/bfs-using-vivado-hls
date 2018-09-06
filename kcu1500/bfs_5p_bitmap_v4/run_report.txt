@@ -1,0 +1,113 @@
+/opt/Xilinx/SDx/2017.1/bin/emconfigutil --platform xilinx:kcu1500:4ddr-xpr:4.0 --nd 1
+
+****** configutil v2017.1_sdx (64-bit)
+  **** SW Build 1915620 on Thu Jun 22 17:54:59 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]    Target platform: /opt/Xilinx/SDx/2017.1/platforms/xilinx_kcu1500_4ddr-xpr_4_0/xilinx_kcu1500_4ddr-xpr_4_0.xpfm
+emulation configuration file `emconfig.json` is created in ./ directory 
+XCL_EMULATION_MODE=hw_emu ./host 
+vertex num: 1157828
+edge num: 2987624
+Graph is loaded.
+rpaoSize: 2315656
+ciaoSize: 15878096
+soft bfs starts.
+software bfs: level = 0
+software bfs: frontier 1
+software bfs: level = 1
+software bfs: frontier 1
+software bfs: level = 2
+software bfs: frontier 264
+software bfs: level = 3
+software bfs: frontier 9516
+software bfs: level = 4
+software bfs: frontier 240956
+software bfs: level = 5
+software bfs: frontier 568782
+software bfs: level = 6
+software bfs: frontier 232228
+software bfs: level = 7
+software bfs: frontier 62280
+software bfs: level = 8
+software bfs: frontier 15533
+software bfs: level = 9
+software bfs: frontier 3945
+software bfs: level = 10
+software bfs: frontier 1061
+software bfs: level = 11
+software bfs: frontier 230
+software bfs: level = 12
+software bfs: frontier 61
+software bfs: level = 13
+software bfs: frontier 20
+software bfs: level = 14
+software bfs: frontier 11
+software bfs: level = 15
+software bfs: frontier 1
+software bfs: level = 16
+Software bfs takes 0.23319 seconds.
+INFO: Importing xclbin/bfs.hw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: Loaded file
+INFO: Importing xclbin/bfs.hw_emu.xilinx_kcu1500_4ddr-xpr_4_0.xclbin
+INFO: Loaded file
+INFO: [SDx-EM 01] Hardware emulation runs detailed simulation underneath. It may take long time for large data set. Please use a small dataset for faster execution. You can still get performance trend for your kernel with smaller dataset.
+INFO: Created Binary
+INFO: Built Program
+hwBfs: level = 0 frontier size: 1
+INFO: [SDx-EM 22] [Wall clock time: 15:49, Emulation time: 0.448078 ms] Data transfer between kernel(s) and global memory(s)
+BANK0          RD = 0.039 KB               WR = 0.000 KB        
+BANK1          RD = 0.000 KB               WR = 0.000 KB        
+BANK2          RD = 0.000 KB               WR = 0.000 KB        
+BANK3          RD = 0.000 KB               WR = 0.000 KB        
+
+hwBfs: level = 1 frontier size: 1
+INFO: [SDx-EM 22] [Wall clock time: 15:56, Emulation time: 0.898011 ms] Data transfer between kernel(s) and global memory(s)
+BANK0          RD = 0.039 KB               WR = 0.066 KB        
+BANK1          RD = 0.000 KB               WR = 0.000 KB        
+BANK2          RD = 0.000 KB               WR = 0.000 KB        
+BANK3          RD = 0.000 KB               WR = 0.000 KB        
+
+hwBfs: level = 2 frontier size: 264
+INFO: [SDx-EM 22] [Wall clock time: 16:04, Emulation time: 1.28998 ms] Data transfer between kernel(s) and global memory(s)
+BANK0          RD = 50.891 KB              WR = 33.098 KB       
+BANK1          RD = 0.000 KB               WR = 0.000 KB        
+BANK2          RD = 0.000 KB               WR = 0.000 KB        
+BANK3          RD = 0.000 KB               WR = 0.000 KB        
+
+INFO: [SDx-EM 22] [Wall clock time: 16:11, Emulation time: 1.69196 ms] Data transfer between kernel(s) and global memory(s)
+BANK0          RD = 50.891 KB              WR = 33.098 KB       
+BANK1          RD = 0.000 KB               WR = 0.000 KB        
+BANK2          RD = 0.000 KB               WR = 0.000 KB        
+BANK3          RD = 0.000 KB               WR = 0.000 KB        
+
+INFO: [SDx-EM 22] [Wall clock time: 16:17, Emulation time: 2.12589 ms] Data transfer between kernel(s) and global memory(s)
+BANK0          RD = 50.891 KB              WR = 33.098 KB       
+BANK1          RD = 0.000 KB               WR = 0.000 KB        
+BANK2          RD = 0.000 KB               WR = 0.000 KB        
+BANK3          RD = 0.000 KB               WR = 0.000 KB        
+
+INFO: [SDx-EM 22] [Wall clock time: 16:24, Emulation time: 2.55242 ms] Data transfer between kernel(s) and global memory(s)
+BANK0          RD = 50.891 KB              WR = 33.098 KB       
+BANK1          RD = 0.000 KB               WR = 0.000 KB        
+BANK2          RD = 0.000 KB               WR = 0.000 KB        
+BANK3          RD = 0.000 KB               WR = 0.000 KB        
+
+INFO: [SDx-EM 22] [Wall clock time: 16:31, Emulation time: 2.98509 ms] Data transfer between kernel(s) and global memory(s)
+BANK0          RD = 50.891 KB              WR = 33.098 KB       
+BANK1          RD = 0.000 KB               WR = 0.000 KB        
+BANK2          RD = 0.000 KB               WR = 0.000 KB        
+BANK3          RD = 0.000 KB               WR = 0.000 KB        
+
+INFO: [SDx-EM 22] [Wall clock time: 16:38, Emulation time: 3.40967 ms] Data transfer between kernel(s) and global memory(s)
+BANK0          RD = 50.891 KB              WR = 33.098 KB       
+BANK1          RD = 0.000 KB               WR = 0.000 KB        
+BANK2          RD = 0.000 KB               WR = 0.000 KB        
+BANK3          RD = 0.000 KB               WR = 0.000 KB        
+
+INFO: [SDx-EM 22] [Wall clock time: 16:45, Emulation time: 3.83021 ms] Data transfer between kernel(s) and global memory(s)
+BANK0          RD = 50.891 KB              WR = 33.098 KB       
+BANK1          RD = 0.000 KB               WR = 0.000 KB        
+BANK2          RD = 0.000 KB               WR = 0.000 KB        
+BANK3          RD = 0.000 KB               WR = 0.000 KB        
+

@@ -168,7 +168,7 @@ int main(int argc, char **argv) {
 	std::clock_t end;
 	double elapsedTime;
 
-	int pad = 16;
+	int pad = 64;
 	std::string gName = "rmat-21-32";
 
 	// Load padded graph data to memory
