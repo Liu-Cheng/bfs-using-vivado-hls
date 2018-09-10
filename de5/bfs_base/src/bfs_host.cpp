@@ -80,7 +80,6 @@ void swBfs(CSR* csr, char* depth, const int &vertexIdx){
 	std::vector<int> frontier;
 	char level = 0;
 	while(true){
-		std::cout << "software bfs: level = " << (int)level << std::endl;
 		for(int i = 0; i < csr->vertexNum; i++){
 			if(depth[i] == level){
 				frontier.push_back(i);
@@ -100,7 +99,7 @@ void swBfs(CSR* csr, char* depth, const int &vertexIdx){
 		if(frontier.empty()){
 			break;
 		}
-		std::cout << "software bfs: frontier " << frontier.size() << std::endl;
+		std::cout << "swBfs iteration: " << (int)level  << ", frontier size: " << frontier.size() << std::endl;
 
 		level++;
 		frontier.clear();
@@ -169,11 +168,7 @@ int align(int num, int dataWidth, int alignedWidth){
 	}
 }
 
-int main(int argc, char ** argv){
-
-	spector::ClContext clContext;
-	cl_device_type deviceType = CL_DEVICE_TYPE_ACCELERATOR;	
-	std::vector<std::string> kernelNames;
+void addKernelNames(std::vector<std::string> &kernelNames){
 	kernelNames.push_back("read_rpa");
 	kernelNames.push_back("read_cia");
 	kernelNames.push_back("traverse_cia");
@@ -185,16 +180,28 @@ int main(int argc, char ** argv){
 	kernelNames.push_back("write_frontier5");
 	kernelNames.push_back("write_frontier6");
 	kernelNames.push_back("write_frontier7");
+}
+
+void initRpaInfo(AlignedArray<int> &rpaInfo, CSR* csr, const int &rootVidx){
+	rpaInfo[0] = csr->rpao[2 * rootVidx];
+	rpaInfo[1] = csr->rpao[2 * rootVidx + 1];
+}
+
+int main(int argc, char ** argv){
+
+	spector::ClContext clContext;
+	cl_device_type deviceType = CL_DEVICE_TYPE_ACCELERATOR;	
+	std::vector<std::string> kernelNames;
+	addKernelNames(kernelNames);
 	const char* clFileName   = "bfs_fpga.cl";
 	const char* aocxFileName = "bfs_fpga.aocx";
 	if(!init_opencl(&clContext, kernelNames, deviceType, clFileName, aocxFileName)){exit(-1);}
-
 	int         pad   = 8;
 	std::string gName = "youtube";
 	Graph* gptr = createGraph(gName);
+	int millionEdges = gptr->edgeNum/(1000000.0);
 	CSR* csr = new CSR(*gptr, pad);
 	free(gptr);
-
 	int vertexNum = csr->vertexNum; 
 	int rpaoSize = (int)(csr->rpao.size());
 	int ciaoSize = (int)(csr->ciao.size());
@@ -203,7 +210,6 @@ int main(int argc, char ** argv){
 	std::cout << "Graph is loaded." << std::endl;
 	std::cout << "rpaoSize: " << rpaoSize << std::endl;
 	std::cout << "ciaoSize: " << ciaoSize << std::endl;
-
 	char* hwDepth = (char*)malloc(vertexNum * sizeof(char));
 	char* swDepth = (char*)malloc(vertexNum * sizeof(char));
 	AlignedArray<int>  rpaInfo(2 * vertexNum);
@@ -211,9 +217,6 @@ int main(int argc, char ** argv){
 	for(int i = 0; i < ciaoSize; i++){
 		cia[i] = csr->ciao[i];
 	}
-	rpaInfo[0] = csr->rpao[2 * rootVidx];
-	rpaInfo[1] = csr->rpao[2 * rootVidx + 1];
-
 	AlignedArray<int> nextFrontier0(segSize);
 	AlignedArray<int> nextFrontier1(segSize);
 	AlignedArray<int> nextFrontier2(segSize);
@@ -223,21 +226,32 @@ int main(int argc, char ** argv){
 	AlignedArray<int> nextFrontier6(segSize);
 	AlignedArray<int> nextFrontier7(segSize);
 	AlignedArray<int> nextFrontierSize(pad);
+	std::vector<int*> nextFrontier(pad);
+	nextFrontier[0] = nextFrontier0.data;
+	nextFrontier[1] = nextFrontier1.data;
+	nextFrontier[2] = nextFrontier2.data;
+	nextFrontier[3] = nextFrontier3.data;
+	nextFrontier[4] = nextFrontier4.data;
+	nextFrontier[5] = nextFrontier5.data;
+	nextFrontier[6] = nextFrontier6.data;
+	nextFrontier[7] = nextFrontier7.data;
 
 	//----------------------
 	// software bfs
 	//----------------------
 	std::cout << "soft bfs starts." << std::endl;
 	swBfsInit(vertexNum, swDepth, rootVidx);
-	std::clock_t begin = clock();
+	auto begin = std::chrono::high_resolution_clock::now();
 	swBfs(csr, swDepth, rootVidx);
-	std::clock_t end = clock();
-	double elapsedTime = (end - begin)*1.0/CLOCKS_PER_SEC;
-	std::cout << "Software bfs takes " << elapsedTime << " seconds." << std::endl;
+	auto end = std::chrono::high_resolution_clock::now();
+	double elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+	std::cout << "Software bfs takes " << elapsedTime << " ms." << std::endl;
+	std::cout << "Measured MTEPS: " << 1000 * millionEdges/elapsedTime << std::endl;
 
 	//--------------------------------
 	// hardware accelerated bfs
 	//--------------------------------
+	initRpaInfo(rpaInfo, csr, rootVidx);
 	hwBfsInit(vertexNum, hwDepth, rootVidx);
 	char level       = 0;
 	int frontierSize = 1;
@@ -247,75 +261,35 @@ int main(int argc, char ** argv){
 	cl_command_queue readRpaQueue  = clContext.queues[0];
 	cl_command_queue readCiaQueue  = clContext.queues[1];
 	cl_command_queue TravCiaQueue  = clContext.queues[2];
-	cl_command_queue wrFrt0Queue   = clContext.queues[3];
-	cl_command_queue wrFrt1Queue   = clContext.queues[4];
-	cl_command_queue wrFrt2Queue   = clContext.queues[5];
-	cl_command_queue wrFrt3Queue   = clContext.queues[6];
-	cl_command_queue wrFrt4Queue   = clContext.queues[7];
-	cl_command_queue wrFrt5Queue   = clContext.queues[8];
-	cl_command_queue wrFrt6Queue   = clContext.queues[9];
-	cl_command_queue wrFrt7Queue   = clContext.queues[10];
+	std::vector<cl_command_queue> writeQueues(pad);
+	writeQueues[0]  = clContext.queues[3];
+	writeQueues[1] = clContext.queues[4];
+	writeQueues[2] = clContext.queues[5];
+	writeQueues[3] = clContext.queues[6];
+	writeQueues[4] = clContext.queues[7];
+	writeQueues[5] = clContext.queues[8];
+	writeQueues[6] = clContext.queues[9];
+	writeQueues[7] = clContext.queues[10];
 	cl_kernel* kernel              = clContext.kernels.data();
 	cl_device_id deviceId          = clContext.device;
 	
 	cl_int err;
-	cl_mem devRpa   = clCreateBuffer(context, CL_MEM_READ_ONLY, sizeof(int) * 2 * vertexNum, NULL, &err);
+	cl_mem devRpa = clCreateBuffer(context, CL_MEM_READ_ONLY, sizeof(int) * 2 * vertexNum, NULL, &err);
 	spector::checkErr(err, "Failed to allocate memory!");
-
-	cl_mem devCia   = clCreateBuffer(context, CL_MEM_READ_ONLY, sizeof(int) * ciaoSize, NULL, &err);
+	cl_mem devCia = clCreateBuffer(context, CL_MEM_READ_ONLY, sizeof(int) * ciaoSize, NULL, &err);
 	spector::checkErr(err, "Failed to allocate memory!");
-
-	cl_mem devNextFrontier0 = clCreateBuffer(context, CL_MEM_WRITE_ONLY, sizeof(int) * segSize, NULL, &err);
-	spector::checkErr(err, "Failed to allocate memory!");
-
-	cl_mem devNextFrontier1 = clCreateBuffer(context, CL_MEM_WRITE_ONLY, sizeof(int) * segSize, NULL, &err);
-	spector::checkErr(err, "Failed to allocate memory!");
-
-	cl_mem devNextFrontier2 = clCreateBuffer(context, CL_MEM_WRITE_ONLY, sizeof(int) * segSize, NULL, &err);
-	spector::checkErr(err, "Failed to allocate memory!");
-
-	cl_mem devNextFrontier3 = clCreateBuffer(context, CL_MEM_WRITE_ONLY, sizeof(int) * segSize, NULL, &err);
-	spector::checkErr(err, "Failed to allocate memory!");
-
-	cl_mem devNextFrontier4 = clCreateBuffer(context, CL_MEM_WRITE_ONLY, sizeof(int) * segSize, NULL, &err);
-	spector::checkErr(err, "Failed to allocate memory!");
-
-	cl_mem devNextFrontier5 = clCreateBuffer(context, CL_MEM_WRITE_ONLY, sizeof(int) * segSize, NULL, &err);
-	spector::checkErr(err, "Failed to allocate memory!");
-
-	cl_mem devNextFrontier6 = clCreateBuffer(context, CL_MEM_WRITE_ONLY, sizeof(int) * segSize, NULL, &err);
-	spector::checkErr(err, "Failed to allocate memory!");
-
-	cl_mem devNextFrontier7 = clCreateBuffer(context, CL_MEM_WRITE_ONLY, sizeof(int) * segSize, NULL, &err);
-	spector::checkErr(err, "Failed to allocate memory!");
-
+	std::vector<cl_mem> devNextFrontier(pad);
+	for(int i = 0; i < pad; i++){
+		devNextFrontier[i] = clCreateBuffer(context, CL_MEM_WRITE_ONLY, sizeof(int) * segSize, NULL, &err);
+		spector::checkErr(err, "Failed to allocate memory!");
+	}
 	cl_mem devNextFrontierSize = clCreateBuffer(context, CL_MEM_WRITE_ONLY, sizeof(int) * pad,  NULL, &err);
 	spector::checkErr(err, "Failed to allocate memory!");
-
-	cl_mem devBitmap0          = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(unsigned char) * BMAP_DEPTH, NULL, &err);
-	spector::checkErr(err, "Failed to allocate memory!");
-
-	cl_mem devBitmap1          = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(unsigned char) * BMAP_DEPTH, NULL, &err);
-	spector::checkErr(err, "Failed to allocate memory!");
-
-	cl_mem devBitmap2          = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(unsigned char) * BMAP_DEPTH, NULL, &err);
-	spector::checkErr(err, "Failed to allocate memory!");
-
-	cl_mem devBitmap3          = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(unsigned char) * BMAP_DEPTH, NULL, &err);
-	spector::checkErr(err, "Failed to allocate memory!");
-
-	cl_mem devBitmap4          = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(unsigned char) * BMAP_DEPTH, NULL, &err);
-	spector::checkErr(err, "Failed to allocate memory!");
-
-	cl_mem devBitmap5          = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(unsigned char) * BMAP_DEPTH, NULL, &err);
-	spector::checkErr(err, "Failed to allocate memory!");
-
-	cl_mem devBitmap6          = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(unsigned char) * BMAP_DEPTH, NULL, &err);
-	spector::checkErr(err, "Failed to allocate memory!");
-
-	cl_mem devBitmap7          = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(unsigned char) * BMAP_DEPTH, NULL, &err);
-	spector::checkErr(err, "Failed to allocate memory!");
-
+	std::vector<cl_mem> devBitmap(pad);
+	for(int i = 0; i < pad; i++){
+		devBitmap[i] = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(unsigned char) * BMAP_DEPTH, NULL, &err);
+		spector::checkErr(err, "Failed to allocate memory!");
+	}
 	err = clEnqueueWriteBuffer(readRpaQueue, devRpa, CL_TRUE, 0, sizeof(int) * frontierSize * 2, rpaInfo.data, 0, NULL, NULL);
 	spector::checkErr(err, "Failed to write memory!");
 	err = clEnqueueWriteBuffer(readCiaQueue, devCia, CL_TRUE, 0, sizeof(int) * ciaoSize, cia.data, 0, NULL, NULL);
@@ -325,24 +299,16 @@ int main(int argc, char ** argv){
 
 	//clSetKernelArg(kernel[0], 0, sizeof(cl_mem), (void*)&devRpa);
 	//clSetKernelArg(kernel[0], 1, sizeof(int),    (void*)&frontierSize);
-
 	clSetKernelArg(kernel[1], 0, sizeof(cl_mem), (void*)&devCia);
 	//clSetKernelArg(kernel[1], 1, sizeof(int),    (void*)&frontierSize);
-
 	clSetKernelArg(kernel[2], 0, sizeof(cl_mem), (void*)&devNextFrontierSize);
 	clSetKernelArg(kernel[2], 1, sizeof(int),    (void*)&rootVidx);
 	//clSetKernelArg(kernel[2], 2, sizeof(char),   (void*)&level);
+	for(int i = 0; i < pad; i++){
+		clSetKernelArg(kernel[3 + i],  0, sizeof(cl_mem), (void*)&(devNextFrontier[i]));
+	}
 
-	clSetKernelArg(kernel[3],  0, sizeof(cl_mem), (void*)&devNextFrontier0);
-	clSetKernelArg(kernel[4],  0, sizeof(cl_mem), (void*)&devNextFrontier1);
-	clSetKernelArg(kernel[5],  0, sizeof(cl_mem), (void*)&devNextFrontier2);
-	clSetKernelArg(kernel[6],  0, sizeof(cl_mem), (void*)&devNextFrontier3);
-	clSetKernelArg(kernel[7],  0, sizeof(cl_mem), (void*)&devNextFrontier4);
-	clSetKernelArg(kernel[8],  0, sizeof(cl_mem), (void*)&devNextFrontier5);
-	clSetKernelArg(kernel[9],  0, sizeof(cl_mem), (void*)&devNextFrontier6);
-	clSetKernelArg(kernel[10], 0, sizeof(cl_mem), (void*)&devNextFrontier7);
-
-	begin = clock();
+	begin = std::chrono::high_resolution_clock::now();
 	while(frontierSize > 0){
 		clSetKernelArg(kernel[0], 0, sizeof(cl_mem), (void*)&devRpa);
 		clSetKernelArg(kernel[0], 1, sizeof(int),    (void*)&frontierSize);
@@ -355,36 +321,18 @@ int main(int argc, char ** argv){
 		spector::checkErr(err, "Failed to enqueue task!");
 		err = clEnqueueTask(TravCiaQueue, kernel[2],  0, NULL, NULL);
 		spector::checkErr(err, "Failed to enqueue task!");
-
-		err = clEnqueueTask(wrFrt0Queue, kernel[3],  0, NULL, NULL);
-		spector::checkErr(err, "Failed to enqueue task!");
-		err = clEnqueueTask(wrFrt1Queue, kernel[4],  0, NULL, NULL);
-		spector::checkErr(err, "Failed to enqueue task!");
-		err = clEnqueueTask(wrFrt2Queue, kernel[5],  0, NULL, NULL);
-		spector::checkErr(err, "Failed to enqueue task!");
-		err = clEnqueueTask(wrFrt3Queue, kernel[6],  0, NULL, NULL);
-		spector::checkErr(err, "Failed to enqueue task!");
-		err = clEnqueueTask(wrFrt4Queue, kernel[7],  0, NULL, NULL);
-		spector::checkErr(err, "Failed to enqueue task!");
-		err = clEnqueueTask(wrFrt5Queue, kernel[8],  0, NULL, NULL);
-		spector::checkErr(err, "Failed to enqueue task!");
-		err = clEnqueueTask(wrFrt6Queue, kernel[9],  0, NULL, NULL);
-		spector::checkErr(err, "Failed to enqueue task!");
-		err = clEnqueueTask(wrFrt7Queue, kernel[10], 0, NULL, NULL);
-		spector::checkErr(err, "Failed to enqueue task!");
-
+		for(int i = 0; i < pad; i++){
+			err = clEnqueueTask(writeQueues[i], kernel[3 + i],  0, NULL, NULL);
+			spector::checkErr(err, "Failed to enqueue task!");
+		}
+	
 		clFinish(readRpaQueue);
 		clFinish(readCiaQueue);
 		clFinish(TravCiaQueue);
-		clFinish(wrFrt0Queue);
-		clFinish(wrFrt1Queue);
-		clFinish(wrFrt2Queue);
-		clFinish(wrFrt3Queue);
-		clFinish(wrFrt4Queue);
-		clFinish(wrFrt5Queue);
-		clFinish(wrFrt6Queue);
-		clFinish(wrFrt7Queue);
-
+		for(int i = 0; i < pad; i++){
+			clFinish(writeQueues[i]);
+		}
+		
 		clEnqueueReadBuffer(readRpaQueue, devNextFrontierSize, CL_TRUE, 0, pad * sizeof(int), (void*)(nextFrontierSize.data), 0, NULL, NULL);
 		clFinish(readRpaQueue);
 
@@ -394,99 +342,36 @@ int main(int argc, char ** argv){
 		}
 		frontierSize = sum;
 
-		if(nextFrontierSize[0] > 0)
-			clEnqueueReadBuffer(wrFrt0Queue, devNextFrontier0, CL_TRUE, 0, sizeof(int) * nextFrontierSize[0], (void*)(nextFrontier0.data), 0, NULL, NULL);
-		if(nextFrontierSize[1] > 0)
-			clEnqueueReadBuffer(wrFrt1Queue, devNextFrontier1, CL_TRUE, 0, sizeof(int) * nextFrontierSize[1], (void*)(nextFrontier1.data), 0, NULL, NULL);
-		if(nextFrontierSize[2] > 0)
-			clEnqueueReadBuffer(wrFrt2Queue, devNextFrontier2, CL_TRUE, 0, sizeof(int) * nextFrontierSize[2], (void*)(nextFrontier2.data), 0, NULL, NULL);
-		if(nextFrontierSize[3] > 0)
-			clEnqueueReadBuffer(wrFrt3Queue, devNextFrontier3, CL_TRUE, 0, sizeof(int) * nextFrontierSize[3], (void*)(nextFrontier3.data), 0, NULL, NULL);
-		if(nextFrontierSize[4] > 0)
-			clEnqueueReadBuffer(wrFrt4Queue, devNextFrontier4, CL_TRUE, 0, sizeof(int) * nextFrontierSize[4], (void*)(nextFrontier4.data), 0, NULL, NULL);
-		if(nextFrontierSize[5] > 0)
-			clEnqueueReadBuffer(wrFrt5Queue, devNextFrontier5, CL_TRUE, 0, sizeof(int) * nextFrontierSize[5], (void*)(nextFrontier5.data), 0, NULL, NULL);
-		if(nextFrontierSize[6] > 0)
-			clEnqueueReadBuffer(wrFrt6Queue, devNextFrontier6, CL_TRUE, 0, sizeof(int) * nextFrontierSize[6], (void*)(nextFrontier6.data), 0, NULL, NULL);
-		if(nextFrontierSize[7] > 0)
-			clEnqueueReadBuffer(wrFrt7Queue, devNextFrontier7, CL_TRUE, 0, sizeof(int) * nextFrontierSize[7], (void*)(nextFrontier7.data), 0, NULL, NULL);
-		if(nextFrontierSize[0] > 0) clFinish(wrFrt0Queue);
-		if(nextFrontierSize[1] > 0) clFinish(wrFrt1Queue);
-		if(nextFrontierSize[2] > 0) clFinish(wrFrt2Queue);
-		if(nextFrontierSize[3] > 0) clFinish(wrFrt3Queue);
-		if(nextFrontierSize[4] > 0) clFinish(wrFrt4Queue);
-		if(nextFrontierSize[5] > 0) clFinish(wrFrt5Queue);
-		if(nextFrontierSize[6] > 0) clFinish(wrFrt6Queue);
-		if(nextFrontierSize[7] > 0) clFinish(wrFrt7Queue);
-
+		for(int i = 0; i < pad; i++){
+			if(nextFrontierSize[i] > 0)
+				clEnqueueReadBuffer(writeQueues[i], devNextFrontier[i], CL_TRUE, 0, sizeof(int) * nextFrontierSize[i], (void*)(nextFrontier[i]), 0, NULL, NULL);
+		}
+		for(int i = 0; i < pad; i++){
+			if(nextFrontierSize[i] > 0) clFinish(writeQueues[i]);
+		}
+		
 		int id = 0;
-		for(int j = 0; j < nextFrontierSize[0]; j++){
-			int vidx = nextFrontier0[j];
-			hwDepth[vidx] = level + 1;
-			rpaInfo[2 * id] = csr->rpao[2 * vidx];
-			rpaInfo[2 * id + 1] = csr->rpao[2 * vidx + 1];
-			id++;
+		for(int i = 0; i < pad; i++){
+			for(int j = 0; j < nextFrontierSize[i]; j++){
+				int vidx = nextFrontier[i][j];
+				hwDepth[vidx] = level + 1;
+				rpaInfo[2 * id] = csr->rpao[2 * vidx];
+				rpaInfo[2 * id + 1] = csr->rpao[2 * vidx + 1];
+				id++;
+			}
 		}
-		for(int j = 0; j < nextFrontierSize[1]; j++){
-			int vidx = nextFrontier1[j];
-			hwDepth[vidx] = level + 1;
-			rpaInfo[2 * id] = csr->rpao[2 * vidx];
-			rpaInfo[2 * id + 1] = csr->rpao[2 * vidx + 1];
-			id++;
-		}
-		for(int j = 0; j < nextFrontierSize[2]; j++){
-			int vidx = nextFrontier2[j];
-			hwDepth[vidx] = level + 1;
-			rpaInfo[2 * id] = csr->rpao[2 * vidx];
-			rpaInfo[2 * id + 1] = csr->rpao[2 * vidx + 1];
-			id++;
-		}
-		for(int j = 0; j < nextFrontierSize[3]; j++){
-			int vidx = nextFrontier3[j];
-			hwDepth[vidx] = level + 1;
-			rpaInfo[2 * id] = csr->rpao[2 * vidx];
-			rpaInfo[2 * id + 1] = csr->rpao[2 * vidx + 1];
-			id++;
-		}
-		for(int j = 0; j < nextFrontierSize[4]; j++){
-			int vidx = nextFrontier4[j];
-			hwDepth[vidx] = level + 1;
-			rpaInfo[2 * id] = csr->rpao[2 * vidx];
-			rpaInfo[2 * id + 1] = csr->rpao[2 * vidx + 1];
-			id++;
-		}
-		for(int j = 0; j < nextFrontierSize[5]; j++){
-			int vidx = nextFrontier5[j];
-			hwDepth[vidx] = level + 1;
-			rpaInfo[2 * id] = csr->rpao[2 * vidx];
-			rpaInfo[2 * id + 1] = csr->rpao[2 * vidx + 1];
-			id++;
-		}
-		for(int j = 0; j < nextFrontierSize[6]; j++){
-			int vidx = nextFrontier6[j];
-			hwDepth[vidx] = level + 1;
-			rpaInfo[2 * id] = csr->rpao[2 * vidx];
-			rpaInfo[2 * id + 1] = csr->rpao[2 * vidx + 1];
-			id++;
-		}
-		for(int j = 0; j < nextFrontierSize[7]; j++){
-			int vidx = nextFrontier7[j];
-			hwDepth[vidx] = level + 1;
-			rpaInfo[2 * id] = csr->rpao[2 * vidx];
-			rpaInfo[2 * id + 1] = csr->rpao[2 * vidx + 1];
-			id++;
-		}
-
+		
 		if(frontierSize > 0){
 			clEnqueueWriteBuffer(readRpaQueue, devRpa, CL_TRUE, 0, sizeof(int) * frontierSize * 2, rpaInfo.data, 0, NULL, NULL);
 			clFinish(readRpaQueue);
 		}
-		std::cout << "swBfs iteration: " << (int)(level) << " frontier size: " << frontierSize << std::endl;
+		std::cout << "hwBfs iteration: " << (int)(level) << ", frontier size: " << frontierSize << std::endl;
 		level++;
 	}
-	end = clock();
-	elapsedTime =(end - begin)*1.0/CLOCKS_PER_SEC;
-	std::cout << "Hardware bfs time: " << elapsedTime << std::endl;
+	end = std::chrono::high_resolution_clock::now();
+	elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+	std::cout << "Hardware bfs time: " << elapsedTime << " ms" << std::endl;
+	std::cout << "Measured MTEPS: " << 1000 * millionEdges / elapsedTime << std::endl;
 
 	verify(swDepth, hwDepth, vertexNum);
 
@@ -499,25 +384,16 @@ int main(int argc, char ** argv){
 	clReleaseCommandQueue(readRpaQueue);
 	clReleaseCommandQueue(readCiaQueue);
 	clReleaseCommandQueue(TravCiaQueue);
-	clReleaseCommandQueue(wrFrt0Queue);
-	clReleaseCommandQueue(wrFrt1Queue);
-	clReleaseCommandQueue(wrFrt2Queue);
-	clReleaseCommandQueue(wrFrt3Queue);
-	clReleaseCommandQueue(wrFrt4Queue);
-	clReleaseCommandQueue(wrFrt5Queue);
-	clReleaseCommandQueue(wrFrt6Queue);
-	clReleaseCommandQueue(wrFrt7Queue);
+	for(int i = 0; i < pad; i++){
+		clReleaseCommandQueue(writeQueues[i]);
+	}
 	clReleaseContext(context);
 	clReleaseMemObject(devRpa);
 	clReleaseMemObject(devCia);
-	clReleaseMemObject(devNextFrontier0);
-	clReleaseMemObject(devNextFrontier1);
-	clReleaseMemObject(devNextFrontier2);
-	clReleaseMemObject(devNextFrontier3);
-	clReleaseMemObject(devNextFrontier4);
-	clReleaseMemObject(devNextFrontier5);
-	clReleaseMemObject(devNextFrontier6);
-	clReleaseMemObject(devNextFrontier7);
+
+	for(int i = 0; i < pad; i++){
+		clReleaseMemObject(devNextFrontier[i]);
+	}
 	clReleaseMemObject(devNextFrontierSize);
 
 	return 0;
