@@ -57,7 +57,6 @@
 //*********************************************
 
 #define ReturnError(x) if(!(x)){ return false; }
-#define ExitError(x)   if(!(x)){ exit(1); }
 #define checkErr(x, y) checkErr_(x, y, __LINE__, __FILE__)
 
 

@@ -55,17 +55,17 @@ CXX := g++
 
 CPPFLAGS += -std=c++11
 # Target
-PRJ=/home/liucheng/de5_prj
+PRJ=/home/liucheng/gitrepo/bfs-using-vivado-hls/de5
 TARGET := host
 TARGET_DIR := bin
 
 # Directories 
-INC_DIRS := $(PRJ)/common/inc/AOCLUtils $(PRJ)/bfs_ref/src
+INC_DIRS := $(PRJ)/common/inc/AOCLUtils $(PRJ)/bfs_base/src
 LIB_DIRS := 
 
 # Files
 INCS := $(wildcard $(PRJ)/common/src/AOCLUtils/*.cpp)
-SRCS := $(wildcard $(PRJ)/bfs_opt_v1/src/*.cpp)
+SRCS := $(wildcard $(PRJ)/bfs_base/src/*.cpp)
 LIBS := rt pthread
 
 # Make it all!
